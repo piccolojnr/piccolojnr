@@ -25,6 +25,7 @@ Here are a few projects I've been working on:
 - **[Pico Lib](https://github.com/piccolojnr/pico-lib.git)**: Pico Library is a web application for discovering and exploring various subjects and books. It features a Flask-based backend API and a React-based frontend interface, enabling users to search for subjects, view related books, and navigate through different subject pages
 - **[Flashcard Generator](https://github.com/piccolojnr/flashcard_generator.git)**: A Python toolset for extracting text and generating flashcards from documents, JSON data, and AI-generated content. Requires Ollama for AI model integration.
 - **[Match love2d](https://github.com/piccolojnr/match_love2d.git)**: A fun puzzle game developed with Lua and LÖVE 2D. Match pairs of cards with the same images in the fewest moves possible.
+- **[Block drop survival](https://github.com/piccolojnr/block-drop-survival.git)**: "Block Drop Survival" is an exciting and fast-paced 2D arcade game where players must navigate a perilous environment filled with falling blocks.
 
 Check out my [repositories](https://github.com/piccolojnr?tab=repositories) for more!
 
