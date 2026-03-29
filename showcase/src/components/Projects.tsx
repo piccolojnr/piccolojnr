@@ -19,12 +19,12 @@ const Projects = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-16">
           <div className="max-w-xl">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-              Featured work
+              Featured case studies
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Case studies from my portfolio repo — production systems, client
-              delivery, and products. Open any card for the full write-up and
-              screenshots.
+              Production Next.js, FastAPI, AI / RAG, and IoT projects — client
+              delivery and personal SaaS. Each card links to a full case study
+              with screenshots and technical depth.
             </p>
           </div>
           <Button variant="outline" className="rounded-md shrink-0 w-fit" asChild>

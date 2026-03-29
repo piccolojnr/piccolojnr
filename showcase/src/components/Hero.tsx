@@ -15,14 +15,19 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase mb-4">
-              Full-stack engineer · Accra
+              Full-stack engineer · Accra, Ghana
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] font-semibold leading-[1.08] mb-6">
-              Rahim Daud
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] font-semibold leading-[1.1] mb-6">
+              <span className="block">Rahim Daud</span>
+              <span className="block mt-3 text-[1.35rem] sm:text-2xl md:text-[1.75rem] lg:text-[2rem] font-medium leading-snug text-muted-foreground tracking-tight max-w-2xl">
+                Full-stack engineer — Next.js, FastAPI, RAG / AI systems, IoT &
+                SaaS. Portfolio for Ghana and remote teams.
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mb-10">
-              Production web apps, AI systems, and IoT — from architecture and
-              APIs through deployment and systems that survive real-world usage.
+              I ship production web apps, retrieval pipelines, and
+              hardware-backed products: architecture, APIs, deployment, and
+              systems that survive real traffic and real users.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <Button className="rounded-md px-6" asChild>

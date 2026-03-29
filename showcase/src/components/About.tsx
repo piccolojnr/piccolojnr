@@ -42,10 +42,11 @@ const About = () => {
             About
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            I build end-to-end systems — web platforms, AI integrations, and
-            IoT when the problem needs it. Most of my work is solo ownership:
-            architecture, implementation, deployment, and keeping things running
-            for real users and clients.
+            I build end-to-end systems as a full-stack engineer in Ghana — web
+            platforms (React / Next.js), APIs (Node, FastAPI, Laravel), AI and
+            RAG integrations, and IoT when the problem needs hardware. Most work
+            is solo ownership: architecture, implementation, deployment, and
+            keeping systems running for real users and clients.
           </p>
         </div>
 
@@ -63,9 +64,9 @@ const About = () => {
             </p>
           </div>
           <div className="border border-border/80 rounded-xl p-8 bg-card/50">
-            <p className="text-sm font-medium text-foreground mb-2">
+            <h3 className="text-sm font-semibold text-foreground mb-2 tracking-wide">
               Focus
-            </p>
+            </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Full-stack applications, payment and auth flows, multi-service
               backends, and dashboards — plus AI pipelines and embedded or

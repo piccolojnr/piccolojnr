@@ -1,11 +1,23 @@
 /** Public site name (title suffix, OG site_name). */
 export const SITE_NAME = "piccolo jnr";
 
-/** Legal / schema name */
-export const PERSON_NAME = "Daud Rahim";
+/** Primary name for Person schema and titles */
+export const PERSON_NAME = "Rahim Daud";
 
+/** Full <title> on the home page (no extra suffix). */
+export const HOME_DOCUMENT_TITLE =
+  "Rahim Daud – Full Stack Engineer (AI, IoT, SaaS) | Portfolio";
+
+/**
+ * Meta description for home & default OG/Twitter body.
+ * Targets: Ghana / Accra, full-stack, RAG, FastAPI, Next.js, IoT, SaaS.
+ */
 export const SITE_DESCRIPTION =
-  "Software engineer building end-to-end web platforms, AI integrations, and IoT. Portfolio and case studies from production work.";
+  "Full-stack engineer in Ghana (Accra) specializing in AI systems, RAG pipelines, FastAPI & Next.js backends, IoT platforms, and scalable SaaS. Production case studies: Memraiq, university systems, and hardware-integrated products.";
+
+/** Comma-separated hints for meta keywords (low weight; still useful for some tools). */
+export const SITE_KEYWORDS =
+  "Rahim Daud, full stack engineer Ghana, Accra software developer, AI engineer portfolio, RAG systems, FastAPI developer, Next.js portfolio, IoT developer portfolio, SaaS architect, piccolo jnr";
 
 export const TWITTER_HANDLE = "@piccolojnr";
 
@@ -17,6 +29,11 @@ export const SAME_AS = [
   "https://www.linkedin.com/in/rahim-daud-piccolo",
   "https://twitter.com/piccolojnr",
 ] as const;
+
+export const PROJECTS_INDEX_DOCUMENT_TITLE = `Software case studies — Next.js, FastAPI, AI & IoT | ${SITE_NAME}`;
+
+export const PROJECTS_INDEX_DESCRIPTION =
+  "Portfolio case studies from a Ghana-based full-stack engineer: Next.js and React frontends, FastAPI and Node APIs, RAG / AI SaaS, payments, and IoT + kiosk systems. Filter by topic.";
 
 function normalizeOrigin(url: string): string {
   return url.replace(/\/+$/, "");
@@ -64,8 +81,14 @@ export function formatPageTitle(pageTitle: string): string {
   return `${pageTitle} · ${SITE_NAME}`;
 }
 
+export function projectDocumentTitle(projectTitle: string): string {
+  return `${projectTitle} — case study | ${PERSON_NAME} · ${SITE_NAME}`;
+}
+
 export function homeJsonLd(): object {
-  const url = getSiteOrigin() ? `${getSiteOrigin()}${pathWithBase("/")}` : pathWithBase("/");
+  const url = getSiteOrigin()
+    ? `${getSiteOrigin()}${pathWithBase("/")}`
+    : pathWithBase("/");
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -75,6 +98,7 @@ export function homeJsonLd(): object {
         url,
         name: SITE_NAME,
         description: SITE_DESCRIPTION,
+        author: { "@id": `${url}#person` },
       },
       {
         "@type": "Person",
@@ -82,7 +106,22 @@ export function homeJsonLd(): object {
         name: PERSON_NAME,
         url,
         sameAs: [...SAME_AS],
-        jobTitle: "Software engineer",
+        jobTitle: "Full-stack software engineer",
+        description: SITE_DESCRIPTION,
+        knowsAbout: [
+          "Full-stack web development",
+          "Next.js",
+          "FastAPI",
+          "Retrieval-augmented generation",
+          "IoT systems",
+          "SaaS architecture",
+          "Ghana",
+        ],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Accra",
+          addressCountry: "GH",
+        },
       },
     ],
   };

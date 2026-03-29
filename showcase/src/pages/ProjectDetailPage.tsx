@@ -20,6 +20,9 @@ import {
 import { usePortfolio } from "@/hooks/usePortfolio";
 import NotFound from "@/pages/NotFound";
 import { Seo } from "@/components/Seo";
+import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
+import { getRelatedProjects } from "@/lib/relatedProjects";
+import { projectDocumentTitle } from "@/lib/site";
 
 function stripLeadingH1(md: string) {
   return md.replace(/^#\s[^\n]+\r?\n+/, "");
@@ -77,10 +80,13 @@ const ProjectDetailPage = () => {
     project.images.find((u) => /^https?:\/\//i.test(u)) ||
     null;
 
+  const related = getRelatedProjects(project, data.projects, 3);
+
   return (
     <article className="pb-24">
       <Seo
         title={project.title}
+        documentTitle={projectDocumentTitle(project.title)}
         description={project.summary}
         path={projectDetailPath(project.slug)}
         imageUrl={ogImage}
@@ -218,6 +224,8 @@ const ProjectDetailPage = () => {
           </div>
         </div>
       ) : null}
+
+      <RelatedCaseStudies current={project} related={related} />
 
       <div className="container-narrow max-w-3xl">
         <div

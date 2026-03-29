@@ -16,24 +16,30 @@ function resolveImageUrl(url: string | null | undefined): string {
 
 export type SeoProps = {
   title: string;
+  /** When set, used as the exact document & OG title (no `· SITE_NAME` suffix). */
+  documentTitle?: string;
   description?: string;
   path: string;
   imageUrl?: string | null;
   ogType?: "website" | "article";
   noIndex?: boolean;
   jsonLd?: object | null;
+  /** Optional meta keywords (e.g. home page). */
+  keywords?: string;
 };
 
 export function Seo({
   title,
+  documentTitle,
   description = SITE_DESCRIPTION,
   path,
   imageUrl,
   ogType = "website",
   noIndex,
   jsonLd,
+  keywords,
 }: SeoProps) {
-  const fullTitle = formatPageTitle(title);
+  const fullTitle = documentTitle ?? formatPageTitle(title);
   const canonical = absoluteUrl(path);
   const desc = description.length > 320 ? `${description.slice(0, 317)}…` : description;
   const image = resolveImageUrl(imageUrl ?? null);
@@ -43,6 +49,7 @@ export function Seo({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
+      {keywords ? <meta name="keywords" content={keywords} /> : null}
       <link rel="canonical" href={canonical} />
       {noIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
 

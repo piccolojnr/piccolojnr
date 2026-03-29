@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/ProjectCard";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { Seo } from "@/components/Seo";
-
-const PROJECTS_DESCRIPTION =
-  "Case studies and project writeups — full-stack web, AI, IoT, and production systems built solo or for clients.";
+import {
+  PROJECTS_INDEX_DESCRIPTION,
+  PROJECTS_INDEX_DOCUMENT_TITLE,
+} from "@/lib/site";
 
 const ProjectsPage = () => {
   const { data, isLoading, isError, error } = usePortfolio();
@@ -32,7 +33,12 @@ const ProjectsPage = () => {
   if (isLoading) {
     return (
       <div className="container-narrow px-4 py-24 flex justify-center">
-        <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
+        <Seo
+          title="Projects"
+          documentTitle={PROJECTS_INDEX_DOCUMENT_TITLE}
+          description={PROJECTS_INDEX_DESCRIPTION}
+          path="/projects"
+        />
         <Loader2 className="h-9 w-9 animate-spin text-muted-foreground" />
       </div>
     );
@@ -41,7 +47,12 @@ const ProjectsPage = () => {
   if (isError || !data) {
     return (
       <div className="container-narrow px-4 py-24 text-center text-destructive text-sm">
-        <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
+        <Seo
+          title="Projects"
+          documentTitle={PROJECTS_INDEX_DOCUMENT_TITLE}
+          description={PROJECTS_INDEX_DESCRIPTION}
+          path="/projects"
+        />
         {error instanceof Error ? error.message : "Could not load projects."}
       </div>
     );
@@ -49,7 +60,12 @@ const ProjectsPage = () => {
 
   return (
     <div className="section-padding min-h-[60vh]">
-      <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
+      <Seo
+        title="Projects"
+        documentTitle={PROJECTS_INDEX_DOCUMENT_TITLE}
+        description={PROJECTS_INDEX_DESCRIPTION}
+        path="/projects"
+      />
       <div className="container-narrow">
         <nav className="text-xs text-muted-foreground mb-10 flex items-center gap-2 tracking-wide">
           <Link to="/" className="hover:text-foreground underline-offset-4 hover:underline">
@@ -81,6 +97,9 @@ const ProjectsPage = () => {
           </p>
         </header>
 
+        <h2 className="text-lg font-semibold tracking-tight text-foreground mb-4">
+          Browse by topic
+        </h2>
         <div className="flex flex-wrap gap-2 mb-12">
           <Button
             variant={filter === "all" ? "default" : "outline"}
