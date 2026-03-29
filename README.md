@@ -1,50 +1,55 @@
-# Hi there, I'm Daud Rahim 👋
+# Daud Rahim
 
-### Welcome to my GitHub profile!
+Full-stack developer based in Ghana. I build AI products, SaaS platforms, web applications, and IoT systems — handling everything from architecture through to deployment and ongoing maintenance, usually as the sole developer on a project.
 
-I'm a second-year Computer Science undergraduate at Knutsford University College in Accra, Ghana. My passion for coding and technology drives me to continuously learn and create innovative solutions. Here, you'll find a collection of my projects, coursework, and contributions to open-source.
+---
 
-## 🚀 About Me
+## What I'm building
 
-- 🌍 From: Accra, Ghana
-- 🎓 Studying: Bachelor of Science in Computer Science at Knutsford University College
-- 📚 Interests: Coding, Anime, Movies, TV Series
-- 📫 Contact: rahimdaud246@gmail.com
+**[Memraiq](https://memraiq.com)** — An AI-powered SaaS platform for querying personal knowledge vaults using natural language. Built across four services: a Next.js 15 frontend, a FastAPI multi-tenant API, a custom RAG pipeline (semantic chunking · Qdrant vector search · Neo4j graph retrieval · cross-encoder reranking), and a v2 API integrating the custom RAG system. Live at [app.memraiq.com](https://app.memraiq.com).
 
-## 🔧 Technologies & Tools
+---
 
-- Programming Languages: ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=c-sharp&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
-- Frameworks: ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
-- Web Development: ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-- Tools & Platforms: ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) ![VS Code](https://img.shields.io/badge/VS%20Code-0078D4?style=flat&logo=visual-studio-code&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white) ![vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white) ![Heroku](https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white)
+## Tech stack
 
-## 📂 Projects
+**Languages:** JavaScript / TypeScript · Python · PHP · Dart · C · SQL
 
-Here are a few projects I've been working on:
+**Frontend:** Next.js · React · Tailwind CSS · shadcn/ui · TanStack Query
 
-- **[Pico Lib](https://github.com/piccolojnr/pico-lib.git)**: Pico Library is a web application for discovering and exploring various subjects and books. It features a Flask-based backend API and a React-based frontend interface, enabling users to search for subjects, view related books, and navigate through different subject pages
-- **[Flashcard Generator](https://github.com/piccolojnr/flashcard_generator.git)**: A Python toolset for extracting text and generating flashcards from documents, JSON data, and AI-generated content. Requires Ollama for AI model integration.
-- **[Match love2d](https://github.com/piccolojnr/match_love2d.git)**: A fun puzzle game developed with Lua and LÖVE 2D. Match pairs of cards with the same images in the fewest moves possible.
-- **[Block drop survival](https://github.com/piccolojnr/block-drop-survival.git)**: "Block Drop Survival" is an exciting and fast-paced 2D arcade game where players must navigate a perilous environment filled with falling blocks.
+**Backend:** FastAPI · Laravel · NestJS · Node.js
 
-Check out my [repositories](https://github.com/piccolojnr?tab=repositories) for more!
+**AI / ML:** RAG systems · Qdrant · Neo4j · Anthropic Claude API · OpenAI API · sentence-transformers · semantic chunking · cross-encoder reranking
 
-## 📈 GitHub Stats
+**Databases:** PostgreSQL · MySQL · Qdrant · Neo4j
 
-![Daud's GitHub stats](https://github-readme-stats.vercel.app/api?username=piccolojnr&show_icons=true&theme=radical)
+**Infrastructure:** Vercel · Railway · Supabase · Nginx · GitLab CI/CD · VPS (Ubuntu)
 
-## 📝 Latest Blog Posts
+**Other:** Flutter · Paystack · Sanity CMS · MQTT · Prisma · SQLModel
 
-<!-- BLOG-POST-LIST:START -->
+---
 
-- [What Happens When You Type “https://www.google.com" in Your Browser and Press Enter?](https://medium.com/@rahimdaud246/what-happens-when-you-type-https-www-google-com-in-your-browser-and-press-enter-eb7b83076965)
-- [Crafting a Book Library: My Journey](https://medium.com/@rahimdaud246/crafting-a-book-library-my-journey-dd3e02a82713)
-<!-- BLOG-POST-LIST:END -->
+## Featured projects
 
-## 🤝 Let's Connect
+| Project | Description | Stack |
+|---|---|---|
+| [Memraiq](https://memraiq.com) | AI SaaS — query your knowledge vault with natural language · custom RAG pipeline | Next.js · FastAPI · Python · Qdrant · Neo4j |
+| SRC Permit System | Permit management platform · 1,687 students · 165,100 GHS processed across two semesters | Next.js · Prisma · MySQL · ExpressPay |
+| [Kitchen Comfort](https://kitchen-comfort.com) | Production e-commerce storefront · 62 products · 45 orders processed | Next.js · Prisma · PostgreSQL · Paystack |
+| Laundry POS | Multi-branch POS · partial payments · 3-channel notifications (email, SMS, WhatsApp) | Laravel · React · Inertia.js · Paystack |
+| Smart Laundry Kiosk | Full IoT system · TCP/IP locker hardware · Android kiosk app · backend · admin dashboard | Flutter · NestJS · Next.js · AL1645 |
+| [KGL Group](https://kglgroup.com.gh) | Corporate site for one of Ghana's top-ranked ICT conglomerates · 6 subsidiaries | Next.js · Sanity CMS · TypeScript |
 
-- LinkedIn: [Rahim Daud](https://www.linkedin.com/in/rahim-daud-piccolo)
-- Twitter: [@piccolojnr](https://x.com/piccolojnr)
-- Email: rahimdaud246@gmail.com
+---
 
-Thanks for visiting my profile! Feel free to reach out if you want to collaborate on a project or just chat about tech.
+## GitHub Stats
+
+![Daud's GitHub stats](https://github-readme-stats.vercel.app/api?username=piccolojnr&show_icons=true&theme=dark&hide_border=true&count_private=true)
+
+---
+
+## Let's connect
+
+- **Email:** rahimdaud24@gmail.com
+- **LinkedIn:** [rahim-daud-piccolo](https://linkedin.com/in/rahim-daud-piccolo)
+- **Live product:** [memraiq.com](https://memraiq.com)
+- **Location:** Accra, Ghana · Open to remote roles, freelance, and SaaS collaborations
