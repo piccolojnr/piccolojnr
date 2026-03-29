@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import NotFound from "@/pages/NotFound";
+import { Seo } from "@/components/Seo";
 
 function stripLeadingH1(md: string) {
   return md.replace(/^#\s[^\n]+\r?\n+/, "");
@@ -30,6 +31,13 @@ const ProjectDetailPage = () => {
   if (isLoading) {
     return (
       <div className="container-narrow px-4 py-24 flex justify-center">
+        {slug ? (
+          <Seo
+            title="Project"
+            description="Loading case study…"
+            path={`/projects/${slug}`}
+          />
+        ) : null}
         <Loader2 className="h-9 w-9 animate-spin text-muted-foreground" />
       </div>
     );
@@ -46,9 +54,20 @@ const ProjectDetailPage = () => {
 
   const body = stripLeadingH1(project.body);
   const hasGallery = project.images.length > 0;
+  const ogImage =
+    project.coverImage?.trim() ||
+    project.images.find((u) => /^https?:\/\//i.test(u)) ||
+    null;
 
   return (
     <article className="pb-24">
+      <Seo
+        title={project.title}
+        description={project.summary}
+        path={`/projects/${project.slug}`}
+        imageUrl={ogImage}
+        ogType="article"
+      />
       <div className="border-b border-border/80 bg-muted/20">
         <div className="container-narrow py-10 md:py-14">
           <nav className="text-xs text-muted-foreground mb-8 flex items-center gap-2 flex-wrap tracking-wide">

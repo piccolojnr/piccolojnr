@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Seo } from "@/components/Seo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,6 +14,12 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-28 px-4">
+      <Seo
+        title="Page not found"
+        description="This page does not exist or was moved."
+        path={location.pathname || "/"}
+        noIndex
+      />
       <div className="text-center max-w-md">
         <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">
           Error

@@ -4,6 +4,10 @@ import { ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/ProjectCard";
 import { usePortfolio } from "@/hooks/usePortfolio";
+import { Seo } from "@/components/Seo";
+
+const PROJECTS_DESCRIPTION =
+  "Case studies and project writeups — full-stack web, AI, IoT, and production systems built solo or for clients.";
 
 const ProjectsPage = () => {
   const { data, isLoading, isError, error } = usePortfolio();
@@ -28,6 +32,7 @@ const ProjectsPage = () => {
   if (isLoading) {
     return (
       <div className="container-narrow px-4 py-24 flex justify-center">
+        <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
         <Loader2 className="h-9 w-9 animate-spin text-muted-foreground" />
       </div>
     );
@@ -36,6 +41,7 @@ const ProjectsPage = () => {
   if (isError || !data) {
     return (
       <div className="container-narrow px-4 py-24 text-center text-destructive text-sm">
+        <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
         {error instanceof Error ? error.message : "Could not load projects."}
       </div>
     );
@@ -43,6 +49,7 @@ const ProjectsPage = () => {
 
   return (
     <div className="section-padding min-h-[60vh]">
+      <Seo title="Projects" description={PROJECTS_DESCRIPTION} path="/projects" />
       <div className="container-narrow">
         <nav className="text-xs text-muted-foreground mb-10 flex items-center gap-2 tracking-wide">
           <Link to="/" className="hover:text-foreground underline-offset-4 hover:underline">
