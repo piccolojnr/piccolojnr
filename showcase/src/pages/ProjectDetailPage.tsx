@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -24,9 +25,23 @@ function stripLeadingH1(md: string) {
   return md.replace(/^#\s[^\n]+\r?\n+/, "");
 }
 
+/** Canonical path for SEO and links (trailing slash so markdown `./artifacts/` resolves correctly). */
+function projectDetailPath(slug: string) {
+  return `/projects/${slug}/`;
+}
+
 const ProjectDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { data, isLoading, isError } = usePortfolio();
+
+  useLayoutEffect(() => {
+    if (!slug || slug === "artifacts") return;
+    if (location.pathname === `/projects/${slug}`) {
+      navigate(projectDetailPath(slug), { replace: true });
+    }
+  }, [slug, location.pathname, navigate]);
 
   if (isLoading) {
     return (
@@ -35,7 +50,7 @@ const ProjectDetailPage = () => {
           <Seo
             title="Project"
             description="Loading case study…"
-            path={`/projects/${slug}`}
+            path={projectDetailPath(slug)}
           />
         ) : null}
         <Loader2 className="h-9 w-9 animate-spin text-muted-foreground" />
@@ -49,6 +64,9 @@ const ProjectDetailPage = () => {
 
   const project = data.projects.find((p) => p.slug === slug);
   if (!project) {
+    if (slug === "artifacts") {
+      return <Navigate to="/projects" replace />;
+    }
     return <NotFound />;
   }
 
@@ -64,7 +82,7 @@ const ProjectDetailPage = () => {
       <Seo
         title={project.title}
         description={project.summary}
-        path={`/projects/${project.slug}`}
+        path={projectDetailPath(project.slug)}
         imageUrl={ogImage}
         ogType="article"
       />
@@ -176,6 +194,7 @@ const ProjectDetailPage = () => {
           <h2 className="font-display text-xl font-semibold mb-8 tracking-tight">
             Screenshots & artifacts
           </h2>
+          <div className="flex justify-center">
           <Carousel className="w-full max-w-4xl">
             <CarouselContent>
               {project.images.map((src) => (
@@ -196,6 +215,7 @@ const ProjectDetailPage = () => {
             <CarouselPrevious className="hidden sm:flex border-border bg-background h-9 w-9 rounded-md" />
             <CarouselNext className="hidden sm:flex border-border bg-background h-9 w-9 rounded-md" />
           </Carousel>
+          </div>
         </div>
       ) : null}
 

@@ -38,7 +38,7 @@ const ProjectCard = ({
       <div className="aspect-[16/10] overflow-hidden bg-muted/50 shrink-0">
         {slug ? (
           <Link
-            to={`/projects/${slug}`}
+            to={`/projects/${slug}/`}
             className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             {media}
@@ -52,7 +52,7 @@ const ProjectCard = ({
         <h3 className="font-display text-lg font-semibold mb-2 tracking-tight">
           {slug ? (
             <Link
-              to={`/projects/${slug}`}
+              to={`/projects/${slug}/`}
               className="hover:underline decoration-border underline-offset-4"
             >
               {title}
@@ -79,7 +79,7 @@ const ProjectCard = ({
         <div className="flex flex-wrap gap-2 mt-auto">
           {slug && (
             <Button size="sm" variant="default" className="rounded-md" asChild>
-              <Link to={`/projects/${slug}`} className="gap-1.5">
+              <Link to={`/projects/${slug}/`} className="gap-1.5">
                 Case study
                 <ArrowRight size={14} strokeWidth={1.5} />
               </Link>

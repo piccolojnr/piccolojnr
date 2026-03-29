@@ -45,7 +45,7 @@ const slugs = Array.isArray(data.projects)
   ? data.projects.map((p) => p.slug).filter(Boolean)
   : [];
 
-const paths = ["/", "/projects", ...slugs.map((s) => `/projects/${s}`)];
+const paths = ["/", "/projects", ...slugs.map((s) => `/projects/${s}/`)];
 
 const urls = paths.map((path) => {
   const loc = `${base}${path === "/" ? "/" : path}`;
