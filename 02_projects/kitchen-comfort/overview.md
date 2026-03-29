@@ -89,9 +89,12 @@ I'd spend more time on the initial product data structure with the client — so
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
 | Live link | kitchen-comfort.com | https://kitchen-comfort.com | Yes |
+| Screenshots | Storefront & admin previews | [`artifacts/`](./artifacts/) | Yes |
 
 ---
 

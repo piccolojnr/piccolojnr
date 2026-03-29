@@ -82,9 +82,12 @@ Establish a clearer change management process at the start — a defined number 
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
 | Live link | alliedghana.com | https://alliedghana.com | Yes |
+| Screenshots | Site previews | [`artifacts/`](./artifacts/) | Yes |
 
 ---
 

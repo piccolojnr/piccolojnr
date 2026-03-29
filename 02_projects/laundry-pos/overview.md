@@ -90,8 +90,11 @@ I'd invest more time upfront defining the warehouse workflow stages with the cli
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
+| Screenshots | UI previews | [`artifacts/`](./artifacts/) | Yes |
 | Live system | Client deployment | — | No — confidential |
 
 ---

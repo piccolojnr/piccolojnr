@@ -87,9 +87,11 @@ I'd design the payment provider abstraction layer properly from the start, so sw
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots, previews, and other files (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
-| Screenshots | UI screenshots available | See `artifacts/` folder | Yes |
+| Screenshots | UI screenshots & previews | [`artifacts/`](./artifacts/) | Yes |
 | Live system | Active during exam periods | — | Restricted to students |
 
 ---

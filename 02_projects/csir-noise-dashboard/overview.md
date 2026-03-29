@@ -85,9 +85,12 @@ I'd spend more time on connection resilience — handling MQTT disconnects and r
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and UI previews (GitHub shows a folder listing). The running dashboard is not public.
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
-| Internal | Government research project — not publicly deployed | — | No |
+| Screenshots | Dashboard UI previews | [`artifacts/`](./artifacts/) | Yes |
+| Deployment | Government research project — not publicly deployed | — | No |
 
 ---
 

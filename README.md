@@ -6,6 +6,8 @@ I'm a developer based in Accra, Ghana building **real-world systems end-to-end**
 
 I don't just build apps. I build **systems that run in production**.
 
+**Quick links:** [Memraiq](https://memraiq.com) · [Memraiq app](https://app.memraiq.com) · [Kitchen Comfort](https://kitchen-comfort.com) · [KGL Group](https://kglgroup.com.gh) · [Allied Ghana](https://alliedghana.com) · [Portfolio vault](https://github.com/piccolojnr/portfolio-vault) · [LinkedIn](https://linkedin.com/in/rahim-daud-piccolo)
+
 ---
 
 ## 🧠 What I Do
@@ -20,6 +22,8 @@ I don't just build apps. I build **systems that run in production**.
 
 ## ⭐ Featured Projects
 
+Each project has a **full case study** in this repo (`overview.md` — problem, build, stack, results, lessons). **Live** links are included where the product is public. Screenshots, video, and other files sit in each project’s **`artifacts/`** folder next to `overview.md` — open the case study and use the **Artifacts & evidence** link to browse them on GitHub.
+
 ---
 
 ### 🧠 Memraiq — AI Knowledge Retrieval Platform
@@ -32,13 +36,14 @@ AI SaaS for querying personal knowledge using a **custom RAG pipeline** (not jus
 - Replaced third-party RAG with custom pipeline
 - Hybrid retrieval (vector + structured + graph)
 
-🔗 [Project Overview](./02_projects/memraiq/overview.md)
+**Live:** [memraiq.com](https://memraiq.com) · [app.memraiq.com](https://app.memraiq.com) (sign-up)  
+**Read more:** [Full case study →](./02_projects/memraiq/overview.md)
 
 ---
 
 ### 🎓 SRC Permit System — Production System
 
-![Permit System](./02_projects/src-permit-system/artifacts/preview.png)
+![Permit System](./02_projects/src-permit-system/artifacts/preview.jpeg)
 
 University system used by **1,687 students**, processing **165,100+ GHS**
 
@@ -46,7 +51,8 @@ University system used by **1,687 students**, processing **165,100+ GHS**
 - Migration from Paystack → ExpressPay (live system)
 - Role-based system with real usage
 
-🔗 [Project Overview](./02_projects/src-permit-system/overview.md)
+**Live:** Restricted to students during exam periods (no public URL)  
+**Read more:** [Full case study →](./02_projects/src-permit-system/overview.md)
 
 ---
 
@@ -61,7 +67,8 @@ End-to-end system controlling **16 physical lockers**
 - Backend + admin dashboard
 - OTP + payment system
 
-🔗 [Project Overview](./02_projects/laundry-kiosk/overview.md)
+**Live:** Working prototype (public deployment pending)  
+**Read more:** [Full case study →](./02_projects/laundry-kiosk/overview.md)
 
 ---
 
@@ -75,7 +82,8 @@ Multi-branch POS system with:
 - WhatsApp / SMS / Email notifications
 - Real client deployment
 
-🔗 [Project Overview](./02_projects/laundry-pos/overview.md)
+**Live:** Client deployment (confidential)  
+**Read more:** [Full case study →](./02_projects/laundry-pos/overview.md)
 
 ---
 
@@ -87,7 +95,8 @@ Multi-branch POS system with:
 - 45+ orders processed
 - Admin dashboard + payment integration
 
-🔗 [Project Overview](./02_projects/kitchen-comfort/overview.md)
+**Live:** [kitchen-comfort.com](https://kitchen-comfort.com)  
+**Read more:** [Full case study →](./02_projects/kitchen-comfort/overview.md)
 
 ---
 
@@ -101,8 +110,8 @@ Built for real companies in Ghana:
 - Multi-page corporate architecture
 - Delivered through long client cycles
 
-🔗 [Allied Ghana](./02_projects/allied-ghana-website/overview.md)
-🔗 [KGL Group](./02_projects/kgl-group-website/overview.md)
+**Live:** [KGL Group](https://kglgroup.com.gh) · [Allied Ghana](https://alliedghana.com)  
+**Read more:** [Allied Ghana →](./02_projects/allied-ghana-website/overview.md) · [KGL Group →](./02_projects/kgl-group-website/overview.md)
 
 ---
 
@@ -116,15 +125,16 @@ Real-time IoT dashboard using MQTT:
 - Map clustering
 - Government research project
 
-🔗 [Project Overview](./02_projects/csir-noise-dashboard/overview.md)
+**Live:** Internal CSIR deployment (not public)  
+**Read more:** [Full case study →](./02_projects/csir-noise-dashboard/overview.md)
 
 ---
 
 ## 📦 Full Portfolio Vault
 
-All project documentation lives here:
+All project documentation also lives in the separate vault repo:
 
-👉 https://github.com/piccolojnr/portfolio-vault
+👉 [github.com/piccolojnr/portfolio-vault](https://github.com/piccolojnr/portfolio-vault)
 
 Each project includes:
 
@@ -170,8 +180,10 @@ Each project includes:
 
 ## 📫 Contact
 
-- LinkedIn: https://linkedin.com/in/rahim-daud-piccolo
-- Location: Accra, Ghana
+- **LinkedIn:** [linkedin.com/in/rahim-daud-piccolo](https://linkedin.com/in/rahim-daud-piccolo)
+- **Email:** rahimdaud24@gmail.com
+- **GitHub:** [github.com/piccolojnr](https://github.com/piccolojnr)
+- **Location:** Accra, Ghana
 
 ---
 

@@ -93,9 +93,11 @@ Start with TCP/IP hardware from the beginning — the RS485 attempt cost signifi
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — demo video, screenshots, and other files (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
-| Video recording | Prototype demo recording | See `artifacts/` folder | Partially |
+| Video & images | Prototype demo recording, screenshots | [`artifacts/`](./artifacts/) | Partially |
 | Live link | Admin dashboard | — | No |
 
 ---

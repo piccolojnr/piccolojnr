@@ -84,9 +84,12 @@ I'd establish a clearer content handover process earlier — documenting which s
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
 | Live link | kglgroup.com.gh | https://kglgroup.com.gh | Yes |
+| Screenshots | Site previews | [`artifacts/`](./artifacts/) | Yes |
 
 ---
 

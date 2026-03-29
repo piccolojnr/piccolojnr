@@ -121,12 +121,14 @@ I'd define the RAG service's API contract earlier and mock it on the API side be
 
 ## Artifacts & evidence
 
+**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots, previews, and other files (GitHub shows a folder listing).
+
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
 | Live app | Frontend (chat, vault, pipeline) | [app.memraiq.com](https://app.memraiq.com) | Yes (sign-up required) |
 | Marketing site | Landing page | [memraiq.com](https://memraiq.com) | Yes |
 | Admin dashboard | Admin panel | [admin.memraiq.com](https://admin.memraiq.com) | Restricted |
-| Screenshots | UI screenshots available | See `artifacts/` folder | Yes |
+| Screenshots | UI screenshots & previews | [`artifacts/`](./artifacts/) | Yes |
 | Source code | All four repos in portfolio vault | `/portfolio-vault/` | Private |
 | Architecture docs | Detailed system design + schema | `memraiq-architecture-plan.md`, `memraiq-system-design.md` | Private |
 
