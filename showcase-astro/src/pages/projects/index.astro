@@ -5,6 +5,7 @@ import { loadPortfolioData } from "../../lib/data";
 import {
   PROJECTS_INDEX_DESCRIPTION,
   PROJECTS_INDEX_DOCUMENT_TITLE,
+  PROJECTS_INDEX_KEYWORDS,
 } from "../../lib/site";
 
 const { projects } = loadPortfolioData();
@@ -17,6 +18,7 @@ const allTags = Array.from(
   title={PROJECTS_INDEX_DOCUMENT_TITLE}
   description={PROJECTS_INDEX_DESCRIPTION}
   canonicalPath="/projects/"
+  keywords={PROJECTS_INDEX_KEYWORDS}
 >
   <div class="section-padding min-h-[60vh]">
     <div class="container-narrow">

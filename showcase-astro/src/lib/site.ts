@@ -16,6 +16,16 @@ export const TWITTER_HANDLE = "@piccolojnr";
 
 export const DEFAULT_OG_PATH = "/profile.jpg";
 
+/** Alt text for the default OG image (home, listing pages). */
+export const DEFAULT_OG_IMAGE_ALT = `${PERSON_NAME} — ${SITE_NAME} portfolio`;
+
+export const PROJECTS_INDEX_KEYWORDS =
+  "software case studies, full stack portfolio Ghana, Next.js projects, FastAPI, AI SaaS, IoT development, Rahim Daud projects";
+
+export function projectOgImageAlt(projectTitle: string): string {
+  return `${projectTitle} — case study preview`;
+}
+
 export const SAME_AS = [
   "https://github.com/piccolojnr",
   "https://www.linkedin.com/in/rahim-daud-piccolo",

@@ -2,13 +2,21 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_NAME, TWITTER_HANDLE, DEFAULT_OG_PATH } from "../lib/site";
+import {
+  SITE_NAME,
+  PERSON_NAME,
+  TWITTER_HANDLE,
+  DEFAULT_OG_PATH,
+  DEFAULT_OG_IMAGE_ALT,
+} from "../lib/site";
 
 interface Props {
   title: string;
   description: string;
   canonicalPath: string;
   ogImage?: string;
+  /** Alt text for og:image / Twitter image (accessibility + some platforms). */
+  ogImageAlt?: string;
   ogType?: string;
   keywords?: string;
   jsonLd?: object;
@@ -20,6 +28,7 @@ const {
   description,
   canonicalPath,
   ogImage,
+  ogImageAlt,
   ogType = "website",
   keywords,
   jsonLd,
@@ -35,6 +44,8 @@ const imagePath = ogImage?.startsWith("http")
 const ogImageURL = imagePath.startsWith("http")
   ? imagePath
   : new URL(imagePath.startsWith("/") ? imagePath : `/${imagePath}`, site).href;
+
+const ogImageAltResolved = ogImageAlt ?? DEFAULT_OG_IMAGE_ALT;
 
 ---
 
@@ -68,14 +79,25 @@ const ogImageURL = imagePath.startsWith("http")
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_GH" />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={ogImageAltResolved} />
+    {
+      ogType === "article" ? (
+        <>
+          <meta property="article:author" content={PERSON_NAME} />
+          <meta property="article:section" content="Case study" />
+        </>
+      ) : null
+    }
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={TWITTER_HANDLE} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAltResolved} />
 
     {
       jsonLd ? (

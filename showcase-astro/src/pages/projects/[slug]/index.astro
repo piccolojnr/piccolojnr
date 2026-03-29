@@ -3,7 +3,11 @@ import Layout from "../../../layouts/Layout.astro";
 import RelatedCaseStudies from "../../../components/RelatedCaseStudies.astro";
 import { loadPortfolioData } from "../../../lib/data";
 import { getRelatedProjects } from "../../../lib/relatedProjects";
-import { projectDocumentTitle } from "../../../lib/site";
+import {
+  PERSON_NAME,
+  projectDocumentTitle,
+  projectOgImageAlt,
+} from "../../../lib/site";
 import { renderPortfolioMarkdown } from "../../../lib/markdown";
 import type { PortfolioProject } from "../../../types/project";
 
@@ -31,14 +35,20 @@ const ogImage =
 const bodyHtml = await renderPortfolioMarkdown(project.body);
 const hasGallery = project.images.length > 0;
 const galleryId = `gallery-${project.slug}`;
+
+const metaDescription =
+  project.summary?.trim() ||
+  `${project.title}: case study by ${PERSON_NAME} — architecture, stack, and outcomes.`;
 ---
 
 <Layout
   title={projectDocumentTitle(project.title)}
-  description={project.summary}
+  description={metaDescription}
   canonicalPath={`/projects/${project.slug}/`}
   ogImage={ogImage}
+  ogImageAlt={projectOgImageAlt(project.title)}
   ogType="article"
+  keywords={project.tags.length ? project.tags.join(", ") : undefined}
 >
   <article class="pb-24">
     <div class="border-b border-border/80 bg-muted/20">
