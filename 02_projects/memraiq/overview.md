@@ -48,54 +48,13 @@ Professionals and developers accumulate large amounts of personal documentation 
 
 ---
 
-## How I did it
+<h2 class="case-study-results-heading">Results</h2>
 
-**Tools & technologies:**
+Solo-built AI SaaS: grounded Q&A over personal knowledge vaults, multi-tenant API, and a custom RAG core — live in production.
 
-*Frontend (memra-app):*
-- Next.js 15 (App Router), React 19, Tailwind CSS v4
-- shadcn/ui component library
-- TanStack Query (data fetching + caching)
-- PDF.js (document viewing), react-markdown, Highlight.js
-- Server-Sent Events (SSE) for streaming pipeline progress
-- JWT-based auth with Next.js middleware
-
-*Backend v1 (memra-api):*
-- FastAPI + uvicorn, SQLModel, PostgreSQL via Supabase
-- Qdrant (vector database — local file or cloud)
-- LightRAG (RAG layer — used in v1 / deployed version)
-- Anthropic Claude + OpenAI (LLM generation + embeddings)
-- Fernet encryption for stored API keys
-- python-docx + weasyprint for document export (DOCX, PDF)
-
-*Custom RAG system (memra-rag — powers v2):*
-- FastAPI service, sentence-transformers, spaCy
-- Qdrant (vector search) + Neo4j (knowledge graph)
-- Semantic chunker with heading/sentence/overlap strategies
-- Query classifier and expansion module
-- Cross-encoder reranker for result relevance scoring
-- Called by API over Railway private network with shared-secret auth
-
-*Backend v2 (memra-api-v2):*
-- FastAPI, SQLModel + Alembic migrations, PostgreSQL
-- PyJWT + bcrypt for auth, pytest for testing
-- Replaces LightRAG dependency with memra-rag service
-
-*Infrastructure:*
-- Vercel (memra-app), Railway (memra-api, memra-rag), Supabase (database), Qdrant cloud (vectors)
-- Domains: memraiq.com, app.memraiq.com, admin.memraiq.com
-
-**Approach / methodology:**
-
-Started with a working v1 to validate the concept quickly — integrated LightRAG as the RAG layer to move fast, built the frontend and API around it, and shipped a live product. Once v1 was stable and deployed, I identified the ceiling of LightRAG as a dependency (limited control over chunking granularity, retrieval tuning, and cost visibility) and made the call to build the RAG pipeline myself.
-
-The custom RAG system (memra-rag) is a standalone FastAPI service. It handles document ingestion, semantic chunking, embedding, multi-stage retrieval (vector + graph), query expansion, and reranking — all under full control. Memra-api-v2 replaces the LightRAG calls with requests to this service over Railway's private network.
-
-The frontend was designed as a proper SaaS product: role-based access, an admin dashboard at its own subdomain, a vault editor with live markdown preview, and a pipeline control panel that streams real-time embedding progress via SSE.
-
----
-
-## Results & impact
+- **Shipped** a working v1, then replaced the bundled RAG dependency with **memra-rag** (custom chunking, retrieval, reranking, graph augmentation) so quality and cost stay under control as usage grows.
+- **Live product** — marketing site, authenticated app (chat, vault, pipeline UX), and admin dashboard across **memraiq.com**, **app.memraiq.com**, and **admin.memraiq.com**.
+- **Delivery scope** — four services (frontend, two API generations, RAG service), **15+** API surfaces, six RAG pipeline stages end-to-end, four cloud providers.
 
 | Metric | Value | Notes |
 |---|---|---|
@@ -105,8 +64,15 @@ The frontend was designed as a proper SaaS product: role-based access, an admin 
 | API endpoints | 15+ | Auth, vault CRUD, pipeline control, conversations, export, settings |
 | Infrastructure providers | 4 | Vercel, Railway, Supabase, Qdrant cloud |
 
-**In plain language:**
-Built and shipped a live AI SaaS product entirely solo — from architecture design to production deployment. After validating the concept with a working v1, I built a custom RAG system from the ground up to replace the third-party dependency and gain full control over retrieval quality and cost. The platform is live at memraiq.com with a multi-tenant API, a real admin dashboard, and a production-ready frontend.
+**In plain language:** Built and shipped a live AI SaaS product end to end — architecture through production. Validated with v1, then rebuilt the intelligence layer as a first-party RAG system for lasting control over retrieval and spend. Today it is a real multi-tenant product with admin, vault editing, streaming answers with citations, and production infrastructure — not a demo.
+
+---
+
+## How I did it
+
+**Stack (one glance):** Next.js 15 on **Vercel**; **FastAPI** + SQLModel on **Railway**; PostgreSQL via **Supabase**; **Qdrant** for vectors and **Neo4j** for graph edges; **Claude** and **OpenAI** for models and embeddings. JWT auth, encrypted API keys, per-organization data isolation, SSE for long-running pipeline feedback.
+
+**How the pieces evolved:** v1 paired the app and API with **LightRAG** to reach production quickly. Once usage made the limits obvious (chunking, tuning, cost visibility), I stood up **memra-rag** — a dedicated FastAPI service for ingestion, semantic chunking, embedding, vector + graph retrieval, query expansion, and cross-encoder reranking — and wired it in through **memra-api-v2** over Railway private networking. The client stays a full SaaS shell: streaming chat, markdown vault with preview, admin subdomain, and real-time pipeline status.
 
 ---
 
