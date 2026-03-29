@@ -1,0 +1,55 @@
+---
+import type { PortfolioProject } from "../types/project";
+import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+  projects: PortfolioProject[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section
+  id="projects"
+  class="section-padding bg-muted/25 border-b border-border/60"
+>
+  <div class="container-narrow">
+    <div
+      class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-16"
+    >
+      <div class="max-w-xl">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+          Featured case studies
+        </h2>
+        <p class="text-muted-foreground leading-relaxed">
+          Production Next.js, FastAPI, AI / RAG, and IoT projects — client
+          delivery and personal SaaS. Each card links to a full case study with
+          screenshots and technical depth.
+        </p>
+      </div>
+      <a
+        href="/projects/"
+        class="inline-flex items-center justify-center rounded-md border border-border text-sm font-medium px-4 py-2 shrink-0 w-fit hover:bg-muted/30 transition-colors"
+      >
+        All projects
+      </a>
+    </div>
+
+    {
+      projects.length ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {projects.map((p) => (
+            <ProjectCard project={p} />
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-muted-foreground py-12 text-sm">
+          No featured projects yet. Run{" "}
+          <code class="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">
+            pnpm run sync:portfolio
+          </code>
+        </p>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,123 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { loadPortfolioData } from "../../lib/data";
+import {
+  PROJECTS_INDEX_DESCRIPTION,
+  PROJECTS_INDEX_DOCUMENT_TITLE,
+} from "../../lib/site";
+
+const { projects } = loadPortfolioData();
+const allTags = Array.from(
+  new Set(projects.flatMap((p) => p.tags))
+).sort();
+---
+
+<Layout
+  title={PROJECTS_INDEX_DOCUMENT_TITLE}
+  description={PROJECTS_INDEX_DESCRIPTION}
+  canonicalPath="/projects/"
+>
+  <div class="section-padding min-h-[60vh]">
+    <div class="container-narrow">
+      <nav
+        class="text-xs text-muted-foreground mb-10 flex items-center gap-2 tracking-wide"
+        aria-label="Breadcrumb"
+      >
+        <a
+          href="/"
+          class="hover:text-foreground underline-offset-4 hover:underline">Home</a
+        >
+        <span class="opacity-50">/</span>
+        <span class="text-foreground font-medium">Projects</span>
+      </nav>
+
+      <header class="mb-12 md:mb-14 max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+          Projects
+        </h1>
+        <p class="text-muted-foreground leading-relaxed">
+          Case studies from{" "}
+          <a
+            href="https://github.com/piccolojnr/piccolojnr/tree/main/02_projects"
+            class="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            piccolojnr/02_projects
+          </a>
+          . Regenerated when you run{" "}
+          <code class="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">
+            pnpm build
+          </code>{" "}
+          or sync.
+        </p>
+      </header>
+
+      <h2 class="text-lg font-semibold tracking-tight text-foreground mb-4">
+        Browse by topic
+      </h2>
+      <div class="flex flex-wrap gap-2 mb-12" id="project-filters" role="group" aria-label="Filter by tag">
+        <button
+          type="button"
+          class="project-filter-btn rounded-md border border-border bg-primary text-primary-foreground text-sm px-3 py-1.5 capitalize"
+          data-tag="all"
+          aria-pressed="true"
+        >
+          All
+        </button>
+        {
+          allTags.map((tag) => (
+            <button
+              type="button"
+              class="project-filter-btn rounded-md border border-border text-sm px-3 py-1.5 capitalize hover:bg-muted/30"
+              data-tag={tag}
+              aria-pressed="false"
+            >
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script is:inline>
+  (function () {
+    var buttons = document.querySelectorAll(".project-filter-btn");
+    var cards = document.querySelectorAll("[data-project-card]");
+
+    function setActive(activeBtn) {
+      buttons.forEach(function (b) {
+        var on = b === activeBtn;
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        if (on) {
+          b.classList.add("bg-primary", "text-primary-foreground");
+          b.classList.remove("hover:bg-muted/30");
+        } else {
+          b.classList.remove("bg-primary", "text-primary-foreground");
+          b.classList.add("hover:bg-muted/30");
+        }
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var tag = btn.getAttribute("data-tag") || "all";
+        setActive(btn);
+        cards.forEach(function (card) {
+          var tags = card.getAttribute("data-tags") || "";
+          var list = tags.split(/\s+/).filter(Boolean);
+          var show =
+            tag === "all" || list.indexOf(tag) !== -1;
+          card.classList.toggle("hidden", !show);
+        });
+      });
+    });
+  })();
+</script>

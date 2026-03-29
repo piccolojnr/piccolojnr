@@ -1,1 +1,97 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: hsl(40 20% 98%);
+  --color-foreground: hsl(220 20% 12%);
+  --color-card: hsl(40 25% 99%);
+  --color-card-foreground: hsl(220 20% 12%);
+  --color-primary: hsl(220 18% 26%);
+  --color-primary-foreground: hsl(40 20% 98%);
+  --color-secondary: hsl(40 15% 94%);
+  --color-secondary-foreground: hsl(220 18% 20%);
+  --color-muted: hsl(40 12% 93%);
+  --color-muted-foreground: hsl(220 10% 42%);
+  --color-accent: hsl(40 18% 92%);
+  --color-accent-foreground: hsl(220 20% 12%);
+  --color-destructive: hsl(0 72% 42%);
+  --color-border: hsl(40 12% 88%);
+  --color-input: hsl(40 12% 88%);
+  --color-ring: hsl(220 18% 26%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    color: var(--color-foreground);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-6;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto w-full;
+  }
+}
+
+/* Project markdown: match prior prose + border tone */
+.prose-portfolio {
+  @apply prose prose-neutral lg:prose-lg max-w-none;
+  --tw-prose-headings: var(--color-foreground);
+  --tw-prose-links: var(--color-foreground);
+}
+
+.prose-portfolio :where(h1, h2, h3) {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.prose-portfolio :where(a) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prose-portfolio :where(hr) {
+  border-color: var(--color-border);
+}
+
+.prose-portfolio :where(th, td) {
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Gallery horizontal scroll */
+.gallery-scroll {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.gallery-scroll > * {
+  scroll-snap-align: start;
+}

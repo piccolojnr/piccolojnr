@@ -1,0 +1,222 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import RelatedCaseStudies from "../../../components/RelatedCaseStudies.astro";
+import { loadPortfolioData } from "../../../lib/data";
+import { getRelatedProjects } from "../../../lib/relatedProjects";
+import { projectDocumentTitle } from "../../../lib/site";
+import { renderPortfolioMarkdown } from "../../../lib/markdown";
+import type { PortfolioProject } from "../../../types/project";
+
+export function getStaticPaths() {
+  const { projects } = loadPortfolioData();
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: PortfolioProject;
+}
+
+const { project } = Astro.props;
+const { projects } = loadPortfolioData();
+const related = getRelatedProjects(project, projects, 3);
+
+const ogImage =
+  project.coverImage?.trim() ||
+  project.images.find((u) => /^https?:\/\//i.test(u)) ||
+  undefined;
+
+const bodyHtml = await renderPortfolioMarkdown(project.body);
+const hasGallery = project.images.length > 0;
+const galleryId = `gallery-${project.slug}`;
+---
+
+<Layout
+  title={projectDocumentTitle(project.title)}
+  description={project.summary}
+  canonicalPath={`/projects/${project.slug}/`}
+  ogImage={ogImage}
+  ogType="article"
+>
+  <article class="pb-24">
+    <div class="border-b border-border/80 bg-muted/20">
+      <div class="container-narrow py-10 md:py-14">
+        <nav
+          class="text-xs text-muted-foreground mb-8 flex items-center gap-2 flex-wrap tracking-wide"
+          aria-label="Breadcrumb"
+        >
+          <a href="/" class="hover:text-foreground underline-offset-4 hover:underline"
+            >Home</a
+          >
+          <span class="opacity-50">/</span>
+          <a
+            href="/projects/"
+            class="hover:text-foreground underline-offset-4 hover:underline"
+            >Projects</a
+          >
+          <span class="opacity-50">/</span>
+          <span class="text-foreground font-medium truncate max-w-[min(100%,12rem)] sm:max-w-md">
+            {project.title}
+          </span>
+        </nav>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div>
+            <h1
+              class="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold tracking-tight mb-4"
+            >
+              {project.title}
+            </h1>
+            <p class="text-lg text-muted-foreground leading-relaxed mb-6">
+              {project.summary}
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              {
+                project.tags.map((t) => (
+                  <span class="text-[11px]  tracking-wide text-muted-foreground border border-border px-2 py-0.5 rounded capitalize">
+                    {t}
+                  </span>
+                ))
+              }
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs text-muted-foreground mb-8">
+              {
+                project.status && (
+                  <span class="border border-border/80 bg-background px-2.5 py-1 rounded-md">
+                    {project.status}
+                  </span>
+                )
+              }
+              {
+                project.period && (
+                  <span class="border border-border/80 bg-background px-2.5 py-1 rounded-md">
+                    {project.period}
+                  </span>
+                )
+              }
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {
+                project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground text-sm px-4 py-2 hover:opacity-90"
+                  >
+                    Live
+                  </a>
+                )
+              }
+              {
+                project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-md border border-border text-sm px-4 py-2 hover:bg-muted/30"
+                  >
+                    Code
+                  </a>
+                )
+              }
+              <a
+                href={project.repoFolderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-md border border-border text-sm px-4 py-2 hover:bg-muted/30"
+              >
+                Repo folder
+              </a>
+            </div>
+          </div>
+
+          {
+            project.coverImage && (
+              <div class="rounded-xl overflow-hidden border border-border bg-muted aspect-video lg:min-h-[240px]">
+                <img
+                  src={project.coverImage}
+                  alt=""
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+
+    {
+      hasGallery && (
+        <div class="container-narrow py-12 md:py-16">
+          <h2 class="font-display text-xl font-semibold mb-8 tracking-tight">
+            Screenshots & artifacts
+          </h2>
+          <div class="relative max-w-4xl mx-auto">
+            <div
+              id={galleryId}
+              class="gallery-scroll flex gap-4 overflow-x-auto pb-4 px-1"
+              tabindex="0"
+            >
+              {project.images.map((src) => (
+                <div class="shrink-0 w-[min(100%,36rem)]">
+                  <div class="rounded-lg overflow-hidden border border-border bg-muted/40 aspect-video flex items-center justify-center p-1">
+                    <img
+                      src={src}
+                      alt=""
+                      class="max-h-[min(70vh,520px)] w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="hidden sm:flex justify-center gap-2 mt-4">
+              <button
+                type="button"
+                class="gallery-prev rounded-md border border-border bg-background px-3 py-2 text-sm hover:bg-muted/30"
+                data-gallery={galleryId}
+                aria-label="Previous image"
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                class="gallery-next rounded-md border border-border bg-background px-3 py-2 text-sm hover:bg-muted/30"
+                data-gallery={galleryId}
+                aria-label="Next image"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    <RelatedCaseStudies current={project} related={related} />
+
+    <div class="container-narrow max-w-3xl">
+      <div
+        class="prose-portfolio"
+        set:html={bodyHtml}
+      />
+    </div>
+  </article>
+</Layout>
+
+<script is:inline>
+  document.querySelectorAll(".gallery-prev, .gallery-next").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.getAttribute("data-gallery");
+      var el = id ? document.getElementById(id) : null;
+      if (!el) return;
+      var delta = btn.classList.contains("gallery-next") ? 1 : -1;
+      var w = el.clientWidth * 0.85;
+      el.scrollBy({ left: delta * w, behavior: "smooth" });
+    });
+  });
+</script>

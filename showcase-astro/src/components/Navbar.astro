@@ -1,0 +1,171 @@
+---
+const linkClass =
+  "text-sm text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline decoration-border";
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-transparent bg-background/70 backdrop-blur-sm transition-colors duration-200"
+>
+  <div class="container-narrow px-4 md:px-6 flex h-14 md:h-16 items-center justify-between">
+    <a
+      href="/"
+      class="font-display text-lg font-semibold tracking-tight text-foreground"
+    >
+      piccolojnr
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main">
+      <a href="/" class={linkClass}>Home</a>
+      <a href="/projects/" class={linkClass}>Projects</a>
+      <a href="/#about" class={linkClass}>About</a>
+      <a href="/#contact" class={linkClass}>Contact</a>
+      <a
+        href="/#contact"
+        class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground text-sm font-medium px-4 py-2 hover:opacity-90 transition-opacity"
+      >
+        Get in touch
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="md:hidden p-2 text-foreground -mr-2"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Toggle menu"
+    >
+      <svg
+        id="nav-icon-open"
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      >
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+      </svg>
+      <svg
+        id="nav-icon-close"
+        class="hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      >
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-nav"
+    class="hidden md:hidden border-t border-border bg-background"
+    hidden
+  >
+    <div class="container-narrow px-4 py-6 flex flex-col gap-1">
+      <a
+        href="/"
+        class="py-3 text-base text-foreground border-b border-border/60 mobile-nav-link"
+        >Home</a
+      >
+      <a
+        href="/projects/"
+        class="py-3 text-base text-foreground border-b border-border/60 mobile-nav-link"
+        >Projects</a
+      >
+      <a
+        href="/#about"
+        class="py-3 text-base text-foreground border-b border-border/60 mobile-nav-link"
+        >About</a
+      >
+      <a
+        href="/#contact"
+        class="py-3 text-base text-foreground border-b border-border/60 mobile-nav-link"
+        >Contact</a
+      >
+      <a
+        href="/#contact"
+        class="mt-4 w-full text-center rounded-md bg-primary text-primary-foreground text-sm font-medium px-4 py-3"
+      >
+        Get in touch
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var header = document.getElementById("site-header");
+    var toggle = document.getElementById("nav-toggle");
+    var panel = document.getElementById("mobile-nav");
+    var iconOpen = document.getElementById("nav-icon-open");
+    var iconClose = document.getElementById("nav-icon-close");
+
+    function setScrolled() {
+      if (!header) return;
+      if (window.scrollY > 8) {
+        header.classList.add(
+          "bg-background/85",
+          "backdrop-blur-md",
+          "border-border",
+          "shadow-sm"
+        );
+        header.classList.remove("border-transparent", "bg-background/70");
+      } else {
+        header.classList.remove(
+          "bg-background/85",
+          "backdrop-blur-md",
+          "border-border",
+          "shadow-sm"
+        );
+        header.classList.add("border-transparent", "bg-background/70");
+      }
+    }
+
+    function closeMenu() {
+      if (!panel || !toggle || !iconOpen || !iconClose) return;
+      panel.classList.add("hidden");
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    }
+
+    function openMenu() {
+      if (!panel || !toggle || !iconOpen || !iconClose) return;
+      panel.classList.remove("hidden");
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      iconOpen.classList.add("hidden");
+      iconClose.classList.remove("hidden");
+    }
+
+    window.addEventListener("scroll", setScrolled, { passive: true });
+    setScrolled();
+
+    if (toggle && panel) {
+      toggle.addEventListener("click", function () {
+        if (panel.hidden) openMenu();
+        else closeMenu();
+      });
+    }
+
+    document.querySelectorAll(".mobile-nav-link").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("astro:after-swap", setScrolled);
+  })();
+</script>

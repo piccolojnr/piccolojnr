@@ -1,13 +1,16 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-import react from '@astrojs/react';
-import partytown from '@astrojs/partytown';
+const site =
+  process.env.SITE_URL ||
+  process.env.VITE_SITE_URL ||
+  process.env.PUBLIC_SITE_URL ||
+  "http://localhost:4321";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), partytown()],
+  site,
+  trailingSlash: "always",
   vite: {
     plugins: [tailwindcss()],
   },

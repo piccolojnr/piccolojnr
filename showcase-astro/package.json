@@ -1,25 +1,26 @@
 {
-  "name": "lonely-limit",
+  "name": "piccolojnr-showcase-astro",
   "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
-    "dev": "astro dev",
+    "sync:portfolio": "node scripts/sync-portfolio.mjs",
+    "prebuild": "pnpm run sync:portfolio && node scripts/generate-sitemap.mjs",
+    "dev": "pnpm run sync:portfolio && astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
+  "devDependencies": {
+    "@types/node": "^22.19.0"
+  },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.6",
-    "@astrojs/react": "^5.0.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "astro": "^6.1.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.2.2"
+    "marked": "^15.0.7",
+    "tailwindcss": "^4.2.2",
+    "yaml": "^2.8.3"
   }
 }

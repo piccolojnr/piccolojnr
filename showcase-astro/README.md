@@ -1,46 +1,30 @@
-# Astro Starter Kit: Basics
+# piccolojnr — Astro showcase
 
-```sh
-pnpm create astro@latest -- --template basics
+Static portfolio built with [Astro](https://astro.build/), Tailwind CSS v4, and the same `02_projects` → `projects.json` sync as the Vite/React `showcase` app.
+
+## Setup
+
+```bash
+pnpm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Environment
 
-## 🚀 Project Structure
+Copy `.env.example` to `.env` and set **`SITE_URL`** (no trailing slash) for correct sitemap, `robots.txt`, and canonical URLs in production. `VITE_SITE_URL` is also read for compatibility.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Scripts
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+| Command | Description |
+|--------|-------------|
+| `pnpm dev` | Sync portfolio from `../02_projects`, then `astro dev` |
+| `pnpm build` | Sync → sitemap/robots → `astro build` |
+| `pnpm preview` | Preview production build |
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Deploy (Vercel)
 
-## 🧞 Commands
+Set the project root to **`showcase-astro`**, install command `pnpm install`, build `pnpm build`, output **`dist`**. Add `SITE_URL` to environment variables.
 
-All commands are run from the root of the project, from a terminal:
+## Monorepo layout
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `scripts/sync-portfolio.mjs` writes to `public/data/projects.json` (from `../02_projects` or GitHub API).
+- Source case studies live under repo root `02_projects/`.

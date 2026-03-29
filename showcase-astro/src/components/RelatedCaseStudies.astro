@@ -1,0 +1,58 @@
+---
+import type { PortfolioProject } from "../types/project";
+import { sharedTags } from "../lib/relatedProjects";
+
+interface Props {
+  current: PortfolioProject;
+  related: PortfolioProject[];
+}
+
+const { current, related } = Astro.props;
+
+function blurb(other: PortfolioProject): string {
+  const overlap = sharedTags(current, other);
+  if (overlap.length) {
+    const labels = overlap.slice(0, 4).join(", ");
+    return `Same stack themes (${labels}) — natural follow-on from this case study.`;
+  }
+  const s = other.summary.trim();
+  return s.length > 160 ? `${s.slice(0, 157)}…` : s;
+}
+---
+
+{
+  related.length > 0 && (
+    <section
+      class="container-narrow max-w-3xl py-12 md:py-14 border-t border-border/80"
+      aria-labelledby="related-case-studies-heading"
+    >
+      <h2
+        id="related-case-studies-heading"
+        class="font-display text-xl font-semibold tracking-tight mb-2"
+      >
+        Related case studies
+      </h2>
+      <p class="text-sm text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+        Internal links between projects help surface how AI, full-stack, and IoT
+        work connect across the portfolio.
+      </p>
+      <ul class="space-y-6">
+        {related.map((p) => (
+          <li>
+            <h3 class="text-base font-semibold font-display tracking-tight">
+              <a
+                href={`/projects/${p.slug}/`}
+                class="text-foreground hover:underline underline-offset-4 decoration-border hover:decoration-foreground"
+              >
+                {p.title}
+              </a>
+            </h3>
+            <p class="text-sm text-muted-foreground mt-1.5 leading-relaxed">
+              {blurb(p)}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
