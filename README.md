@@ -1,55 +1,178 @@
-# Daud Rahim
+# Hi, I'm Piccolo 👋
 
-Full-stack developer based in Ghana. I build AI products, SaaS platforms, web applications, and IoT systems — handling everything from architecture through to deployment and ongoing maintenance, usually as the sole developer on a project.
+## 🚀 Full-Stack Engineer | AI Systems | IoT Builder
 
----
+I'm a developer based in Accra, Ghana building **real-world systems end-to-end** — from backend architecture to deployment, payments, AI pipelines, and even hardware integrations.
 
-## What I'm building
-
-**[Memraiq](https://memraiq.com)** — An AI-powered SaaS platform for querying personal knowledge vaults using natural language. Built across four services: a Next.js 15 frontend, a FastAPI multi-tenant API, a custom RAG pipeline (semantic chunking · Qdrant vector search · Neo4j graph retrieval · cross-encoder reranking), and a v2 API integrating the custom RAG system. Live at [app.memraiq.com](https://app.memraiq.com).
+I don't just build apps. I build **systems that run in production**.
 
 ---
 
-## Tech stack
+## 🧠 What I Do
 
-**Languages:** JavaScript / TypeScript · Python · PHP · Dart · C · SQL
-
-**Frontend:** Next.js · React · Tailwind CSS · shadcn/ui · TanStack Query
-
-**Backend:** FastAPI · Laravel · NestJS · Node.js
-
-**AI / ML:** RAG systems · Qdrant · Neo4j · Anthropic Claude API · OpenAI API · sentence-transformers · semantic chunking · cross-encoder reranking
-
-**Databases:** PostgreSQL · MySQL · Qdrant · Neo4j
-
-**Infrastructure:** Vercel · Railway · Supabase · Nginx · GitLab CI/CD · VPS (Ubuntu)
-
-**Other:** Flutter · Paystack · Sanity CMS · MQTT · Prisma · SQLModel
+* Full-stack web apps (Next.js, Laravel, FastAPI)
+* AI systems (RAG pipelines, vector search, LLM integrations)
+* IoT + hardware integrations
+* SaaS platforms & internal tools
+* Payments & real-world systems (Paystack, ExpressPay)
 
 ---
 
-## Featured projects
-
-| Project | Description | Stack |
-|---|---|---|
-| [Memraiq](https://memraiq.com) | AI SaaS — query your knowledge vault with natural language · custom RAG pipeline | Next.js · FastAPI · Python · Qdrant · Neo4j |
-| SRC Permit System | Permit management platform · 1,687 students · 165,100 GHS processed across two semesters | Next.js · Prisma · MySQL · ExpressPay |
-| [Kitchen Comfort](https://kitchen-comfort.com) | Production e-commerce storefront · 62 products · 45 orders processed | Next.js · Prisma · PostgreSQL · Paystack |
-| Laundry POS | Multi-branch POS · partial payments · 3-channel notifications (email, SMS, WhatsApp) | Laravel · React · Inertia.js · Paystack |
-| Smart Laundry Kiosk | Full IoT system · TCP/IP locker hardware · Android kiosk app · backend · admin dashboard | Flutter · NestJS · Next.js · AL1645 |
-| [KGL Group](https://kglgroup.com.gh) | Corporate site for one of Ghana's top-ranked ICT conglomerates · 6 subsidiaries | Next.js · Sanity CMS · TypeScript |
+## ⭐ Featured Projects
 
 ---
 
-## GitHub Stats
+### 🧠 Memraiq — AI Knowledge Retrieval Platform
 
-![Daud's GitHub stats](https://github-readme-stats.vercel.app/api?username=piccolojnr&show_icons=true&theme=dark&hide_border=true&count_private=true)
+![Memraiq Screenshot](./files/02_projects/memraiq/artifacts/preview.png)
+
+AI SaaS for querying personal knowledge using a **custom RAG pipeline** (not just wrappers).
+
+* Built multi-service architecture (frontend, API, RAG engine)
+* Replaced third-party RAG with custom pipeline
+* Hybrid retrieval (vector + structured + graph)
+
+🔗 [Project Overview](./files/02_projects/memraiq/overview.md)
 
 ---
 
-## Let's connect
+### 🎓 SRC Permit System — Production System
 
-- **Email:** rahimdaud24@gmail.com
-- **LinkedIn:** [rahim-daud-piccolo](https://linkedin.com/in/rahim-daud-piccolo)
-- **Live product:** [memraiq.com](https://memraiq.com)
-- **Location:** Accra, Ghana · Open to remote roles, freelance, and SaaS collaborations
+![Permit System](./files/02_projects/src-permit-system/artifacts/preview.png)
+
+University system used by **1,687 students**, processing **165,100+ GHS**
+
+* Full auth + payment flow
+* Migration from Paystack → ExpressPay (live system)
+* Role-based system with real usage
+
+🔗 [Project Overview](./files/02_projects/src-permit-system/overview.md)
+
+---
+
+### 🧺 Smart Laundry Kiosk — IoT + Software
+
+![Laundry Kiosk](./files/02_projects/laundry-kiosk/artifacts/preview.png)
+
+End-to-end system controlling **16 physical lockers**
+
+* Hardware integration (TCP/IP controller)
+* Flutter kiosk app
+* Backend + admin dashboard
+* OTP + payment system
+
+🔗 [Project Overview](./files/02_projects/laundry-kiosk/overview.md)
+
+---
+
+### 🧾 Laundry POS — Business System
+
+![Laundry POS](./files/02_projects/laundry-pos/artifacts/preview.png)
+
+Multi-branch POS system with:
+
+* Partial payments
+* WhatsApp / SMS / Email notifications
+* Real client deployment
+
+🔗 [Project Overview](./files/02_projects/laundry-pos/overview.md)
+
+---
+
+### 🛒 Kitchen Comfort — E-commerce Platform
+
+![Kitchen Comfort](./files/02_projects/kitchen-comfort/artifacts/preview.png)
+
+* 62 products
+* 45+ orders processed
+* Admin dashboard + payment integration
+
+🔗 [Project Overview](./files/02_projects/kitchen-comfort/overview.md)
+
+---
+
+### 🏢 Corporate Websites (KGL + Allied Ghana)
+
+![Corporate Site](./files/02_projects/allied-ghana-website/artifacts/preview.png)
+
+Built for real companies in Ghana:
+
+* CMS-powered (Sanity)
+* Multi-page corporate architecture
+* Delivered through long client cycles
+
+🔗 [Allied Ghana](./files/02_projects/allied-ghana-website/overview.md)
+🔗 [KGL Group](./files/02_projects/kgl-group-website/overview.md)
+
+---
+
+### 📡 CSIR Noise Dashboard — IoT System
+
+![CSIR Dashboard](./files/02_projects/csir-noise-dashboard/artifacts/preview.png)
+
+Real-time IoT dashboard using MQTT:
+
+* Live sensor data
+* Map clustering
+* Government research project
+
+🔗 [Project Overview](./files/02_projects/csir-noise-dashboard/overview.md)
+
+---
+
+## 📦 Full Portfolio Vault
+
+All project documentation lives here:
+
+👉 https://github.com/piccolojnr/portfolio-vault
+
+Each project includes:
+
+* Problem
+* What I built
+* How I built it
+* Results & impact
+* Lessons learned
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+
+* Next.js, React, Tailwind
+
+**Backend**
+
+* Laravel, FastAPI, NestJS
+
+**AI**
+
+* RAG pipelines
+* Qdrant, Neo4j
+* OpenAI / Anthropic
+
+**Infra**
+
+* Vercel, Railway, VPS
+* Nginx, Docker
+
+---
+
+## 📊 Highlights
+
+* 12+ projects shipped
+* Real paying clients
+* Systems handling real money + users
+* Built across web, AI, and IoT
+
+---
+
+## 📫 Contact
+
+* LinkedIn: https://linkedin.com/in/rahim-daud-piccolo
+* Location: Accra, Ghana
+
+---
+
+> I build systems that don’t just work — they survive real-world usage.
