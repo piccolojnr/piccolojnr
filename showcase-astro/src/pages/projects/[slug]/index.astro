@@ -33,6 +33,7 @@ const ogImage =
   undefined;
 
 const bodyHtml = await renderPortfolioMarkdown(project.body);
+const hasBody = project.body.trim().length > 0;
 const hasGallery = project.images.length > 0;
 const galleryId = `gallery-${project.slug}`;
 
@@ -160,8 +161,25 @@ const metaDescription =
     </div>
 
     {
+      hasBody && (
+        <section
+          class="container-narrow max-w-3xl py-12 md:py-16 border-t border-border/80"
+          aria-labelledby="case-study-body-heading"
+        >
+          <h2
+            id="case-study-body-heading"
+            class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-8"
+          >
+            Case study
+          </h2>
+          <div class="prose-portfolio" set:html={bodyHtml} />
+        </section>
+      )
+    }
+
+    {
       hasGallery && (
-        <div class="container-narrow py-12 md:py-16">
+        <div class="container-narrow py-12 md:py-16 border-t border-border/80">
           <h2 class="font-display text-xl font-semibold mb-8 tracking-tight">
             Screenshots & artifacts
           </h2>
@@ -208,13 +226,6 @@ const metaDescription =
     }
 
     <RelatedCaseStudies current={project} related={related} />
-
-    <div class="container-narrow max-w-3xl">
-      <div
-        class="prose-portfolio"
-        set:html={bodyHtml}
-      />
-    </div>
   </article>
 </Layout>
 
