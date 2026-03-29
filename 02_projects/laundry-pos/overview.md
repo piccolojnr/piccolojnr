@@ -1,3 +1,15 @@
+---
+title: Laundry POS
+summary: Multi-branch laundry POS with Laravel and React (Inertia), partial Paystack payments, and per-customer email, SMS, and WhatsApp notifications.
+tags:
+  - fullstack
+  - saas
+  - payments
+featured: true
+sortOrder: 4
+cover: artifacts/preview.png
+---
+
 # Project: Laundry POS System
 
 ---

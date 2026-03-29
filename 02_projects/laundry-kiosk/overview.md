@@ -1,3 +1,15 @@
+---
+title: Smart Laundry Kiosk
+summary: IoT laundry locker system — Flutter kiosk, NestJS API, Next.js admin, TCP/IP hardware, OTP and Paystack flows. Working prototype.
+tags:
+  - iot
+  - fullstack
+  - hardware
+featured: true
+sortOrder: 3
+cover: artifacts/preview.png
+---
+
 # Project: Smart Laundry Pickup/Dropoff Kiosk
 
 ---

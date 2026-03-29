@@ -1,3 +1,15 @@
+---
+title: CSIR Noise Dashboard
+summary: Real-time IoT dashboard for CSIR — Next.js, MQTT live sensor data, interactive map with clustering for city-wide noise monitoring.
+tags:
+  - iot
+  - dashboard
+  - research
+featured: true
+sortOrder: 8
+cover: artifacts/preview.png
+---
+
 # Project: CSIR Real-Time Noise Monitoring Dashboard
 
 ---

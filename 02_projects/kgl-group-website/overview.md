@@ -1,3 +1,15 @@
+---
+title: KGL Group
+summary: Multi-section corporate site for a six-subsidiary Ghanaian conglomerate — Next.js, Sanity CMS, careers, press, and gallery.
+tags:
+  - frontend
+  - cms
+featured: true
+sortOrder: 7
+liveUrl: https://kglgroup.com.gh
+cover: artifacts/preview.png
+---
+
 # Project: KGL Group Corporate Website
 
 ---

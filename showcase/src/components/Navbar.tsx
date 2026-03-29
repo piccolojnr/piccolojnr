@@ -1,88 +1,84 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { MenuIcon, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
-    { title: "Home", href: "#home" },
-    { title: "About", href: "#about" },
-    { title: "Projects", href: "#projects" },
-    { title: "Contact", href: "#contact" },
+    { title: "Home", to: "/" },
+    { title: "Projects", to: "/projects" },
+    { title: "About", to: "/#about" },
+    { title: "Contact", to: "/#contact" },
   ];
+
+  const linkClass =
+    "text-sm text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline decoration-border";
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
         scrolled
-          ? "bg-white/90 shadow-md backdrop-blur-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/85 backdrop-blur-md border-border shadow-sm"
+          : "bg-background/70 backdrop-blur-sm border-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <a href="#home" className="text-xl font-bold text-portfolio-darkBlue">
-          piccolojnr<span className="text-portfolio-blue">.</span>
-        </a>
+      <div className="container-narrow px-4 md:px-6 flex h-14 md:h-16 items-center justify-between">
+        <Link
+          to="/"
+          className="font-display text-lg font-semibold tracking-tight text-foreground"
+        >
+          piccolojnr
+        </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="text-gray-700 hover:text-portfolio-blue transition-colors duration-300"
-            >
+            <Link key={link.title} to={link.to} className={linkClass}>
               {link.title}
-            </a>
+            </Link>
           ))}
-          <Button variant="default">
-            <a href="#contact">Get in touch</a>
+          <Button size="sm" variant="default" className="rounded-md" asChild>
+            <Link to="/#contact">Get in touch</Link>
           </Button>
         </nav>
 
-        {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden p-2 text-foreground -mr-2"
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <MenuIcon size={24} />}
+          {isOpen ? <X size={22} strokeWidth={1.5} /> : <MenuIcon size={22} strokeWidth={1.5} />}
         </button>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="fixed inset-0 top-16 bg-white z-40 md:hidden">
-          <div className="flex flex-col items-center justify-center gap-6 h-full">
+        <div className="md:hidden border-t border-border bg-background">
+          <div className="container-narrow px-4 py-6 flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.title}
-                href={link.href}
-                className="text-lg text-gray-700 hover:text-portfolio-blue transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                to={link.to}
+                className="py-3 text-base text-foreground border-b border-border/60 last:border-0"
               >
                 {link.title}
-              </a>
+              </Link>
             ))}
-            <Button variant="default" onClick={() => setIsOpen(false)}>
-              <a href="#contact">Get in touch</a>
+            <Button className="mt-4 w-full rounded-md" variant="default" asChild>
+              <Link to="/#contact">Get in touch</Link>
             </Button>
           </div>
         </div>

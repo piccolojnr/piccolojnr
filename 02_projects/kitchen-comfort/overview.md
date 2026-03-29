@@ -1,3 +1,15 @@
+---
+title: Kitchen Comfort
+summary: Production Next.js e-commerce for a Ghanaian kitchenware brand — 62 products, Paystack, admin dashboard, 45+ orders since launch.
+tags:
+  - ecommerce
+  - fullstack
+featured: true
+sortOrder: 5
+liveUrl: https://kitchen-comfort.com
+cover: artifacts/preview.png
+---
+
 # Project: Kitchen Comfort E-commerce Storefront
 
 ---

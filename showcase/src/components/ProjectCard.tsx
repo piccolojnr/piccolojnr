@@ -1,7 +1,9 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export interface ProjectCardProps {
+  slug?: string;
   title: string;
   description: string;
   technologies: string[];
@@ -11,6 +13,7 @@ export interface ProjectCardProps {
 }
 
 const ProjectCard = ({
+  slug,
   title,
   description,
   technologies,
@@ -18,53 +21,83 @@ const ProjectCard = ({
   liveUrl,
   image,
 }: ProjectCardProps) => {
+  const media = (
+    <>
+      {image ? (
+        <img src={image} alt="" className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
+          No preview
+        </div>
+      )}
+    </>
+  );
+
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <div className="h-48 overflow-hidden bg-gray-200">
-        {image ? (
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+    <div className="group flex flex-col border border-border/80 rounded-xl overflow-hidden bg-card/40 hover:border-border transition-colors">
+      <div className="aspect-[16/10] overflow-hidden bg-muted/50 shrink-0">
+        {slug ? (
+          <Link
+            to={`/projects/${slug}`}
+            className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {media}
+          </Link>
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
-            No image available
-          </div>
+          media
         )}
       </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4 text-sm">{description}</p>
+      <div className="p-5 md:p-6 flex flex-col flex-1">
+        <h3 className="font-display text-lg font-semibold mb-2 tracking-tight">
+          {slug ? (
+            <Link
+              to={`/projects/${slug}`}
+              className="hover:underline decoration-border underline-offset-4"
+            >
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+        </h3>
+        <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-4">
+          {description}
+        </p>
 
-        <div className="flex flex-wrap gap-2 mb-5">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="bg-blue-50 text-portfolio-blue text-xs px-3 py-1 rounded-full"
+              className="text-[11px] uppercase tracking-wide text-muted-foreground border border-border/80 px-2 py-0.5 rounded"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {slug && (
+            <Button size="sm" variant="default" className="rounded-md" asChild>
+              <Link to={`/projects/${slug}`} className="gap-1.5">
+                Case study
+                <ArrowRight size={14} strokeWidth={1.5} />
+              </Link>
+            </Button>
+          )}
           {githubUrl && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="flex items-center gap-1"
-              asChild
-            >
+            <Button size="sm" variant="outline" className="rounded-md gap-1.5" asChild>
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                <Github size={16} />
-                <span>Code</span>
+                <Github size={14} strokeWidth={1.5} />
+                Code
               </a>
             </Button>
           )}
-
           {liveUrl && (
-            <Button size="sm" className="flex items-center gap-1" asChild>
+            <Button size="sm" variant="ghost" className="rounded-md gap-1.5" asChild>
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={16} />
-                <span>Live Demo</span>
+                <ExternalLink size={14} strokeWidth={1.5} />
+                Live
               </a>
             </Button>
           )}

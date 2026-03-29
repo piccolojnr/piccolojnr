@@ -1,3 +1,15 @@
+---
+title: Allied Ghana
+summary: Corporate site for Allied Ghana (energy) — Next.js, TypeScript, Sanity CMS, station locator and partnerships. Delivered after long client iterations.
+tags:
+  - frontend
+  - cms
+featured: true
+sortOrder: 6
+liveUrl: https://alliedghana.com
+cover: artifacts/preview.png
+---
+
 # Project: Allied Ghana Corporate Website
 
 ---

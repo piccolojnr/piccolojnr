@@ -1,3 +1,16 @@
+---
+title: Memraiq
+summary: AI SaaS for querying personal knowledge with a custom RAG pipeline, multi-tenant API, and production deployments on Vercel and Railway.
+tags:
+  - ai
+  - saas
+  - fullstack
+featured: true
+sortOrder: 1
+liveUrl: https://app.memraiq.com
+cover: artifacts/preview.png
+---
+
 # Project: Memraiq — AI-Powered Portfolio RAG Platform
 
 ---

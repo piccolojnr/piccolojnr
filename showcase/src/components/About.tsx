@@ -1,126 +1,99 @@
-import { Code, Layout, Database } from "lucide-react";
-
 const About = () => {
   const skills = [
     {
       category: "Frontend",
       list: [
-        "React.js",
+        "React",
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
-        "HTML5/CSS3",
-        "JavaScript (ES6+)",
-        "Shadcn/ui",
+        "shadcn/ui",
       ],
     },
     {
-      category: "Backend",
+      category: "Backend & data",
       list: [
         "Node.js",
-        "Express",
-        "MongoDB",
-        "PostgreSQL",
-        "RESTful APIs",
-        "GraphQL",
         "Laravel",
+        "FastAPI",
+        "PostgreSQL",
+        "MySQL",
+        "REST APIs",
       ],
     },
     {
-      category: "Tools & Others",
+      category: "Tools & delivery",
       list: [
-        "Git & GitHub",
+        "Git",
         "Docker",
         "Vercel",
-        "VS Code",
+        "Railway",
         "Figma",
-        "Jest",
-        "Postman",
+        "Linux / VPS",
       ],
     },
   ];
 
   return (
-    <section id="about" className="section-padding">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2">About Me</h2>
-          <div className="w-20 h-1 bg-portfolio-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Passionate developer focused on creating innovative web solutions
-            with modern technologies.
+    <section id="about" className="section-padding border-b border-border/60">
+      <div className="container-narrow">
+        <div className="max-w-2xl mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+            About
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            I build end-to-end systems — web platforms, AI integrations, and
+            IoT when the problem needs it. Most of my work is solo ownership:
+            architecture, implementation, deployment, and keeping things running
+            for real users and clients.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Who am I?</h3>
-            <p className="text-gray-600 mb-4">
-              I'm a passionate Full Stack Developer with a strong focus on
-              frontend technologies. I enjoy turning complex problems into
-              simple, beautiful, and intuitive solutions.
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              Based in Accra, Ghana. I care about clear structure, honest
+              trade-offs, and shipping that does not fall over when traffic,
+              money, or hardware gets involved.
             </p>
-            <p className="text-gray-600 mb-4">
-              With a background in Computer Science and several years of
-              experience in web development, I've worked on various projects
-              ranging from small business websites to complex web applications.
-            </p>
-            <p className="text-gray-600 mb-4">
-              When I'm not coding, you can find me exploring new technologies,
-              contributing to open-source projects, or enjoying outdoor
-              activities.
+            <p>
+              Outside of client and product work, I iterate on my own tools
+              and experiment with retrieval, agents, and anything that makes
+              production systems easier to reason about.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-                <Code size={24} className="text-portfolio-blue" />
-              </div>
-              <h4 className="font-semibold text-lg mb-2">Frontend</h4>
-              <p className="text-gray-600 text-sm">
-                Creating responsive, accessible and beautiful user interfaces.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-                <Database size={24} className="text-portfolio-blue" />
-              </div>
-              <h4 className="font-semibold text-lg mb-2">Backend</h4>
-              <p className="text-gray-600 text-sm">
-                Building robust APIs and efficient database solutions.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-                <Layout size={24} className="text-portfolio-blue" />
-              </div>
-              <h4 className="font-semibold text-lg mb-2">UI/UX</h4>
-              <p className="text-gray-600 text-sm">
-                Designing intuitive experiences that users love.
-              </p>
-            </div>
+          <div className="border border-border/80 rounded-xl p-8 bg-card/50">
+            <p className="text-sm font-medium text-foreground mb-2">
+              Focus
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Full-stack applications, payment and auth flows, multi-service
+              backends, and dashboards — plus AI pipelines and embedded or
+              device-facing software when the project demands it.
+            </p>
           </div>
         </div>
 
-        <div className="mt-16">
-          <h3 className="text-2xl font-semibold mb-6 text-center">
-            Skills & Technologies
+        <div>
+          <h3 className="text-xl font-semibold font-display mb-8 md:mb-10">
+            Skills & technologies
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {skills.map((skillGroup) => (
               <div
                 key={skillGroup.category}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="border border-border/80 rounded-xl p-6 md:p-8 bg-background"
               >
-                <h4 className="font-semibold text-lg mb-4 text-portfolio-blue">
+                <h4 className="text-sm font-semibold text-foreground mb-4 tracking-wide">
                   {skillGroup.category}
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                   {skillGroup.list.map((skill) => (
-                    <li key={skill} className="flex items-center">
-                      <div className="w-2 h-2 bg-portfolio-blue rounded-full mr-3"></div>
-                      <span className="text-gray-700">{skill}</span>
+                    <li
+                      key={skill}
+                      className="text-sm text-muted-foreground border-l-2 border-border pl-3"
+                    >
+                      {skill}
                     </li>
                   ))}
                 </ul>

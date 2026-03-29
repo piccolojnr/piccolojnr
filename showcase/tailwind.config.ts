@@ -19,6 +19,20 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: [
+					'"Source Sans 3"',
+					'ui-sans-serif',
+					'system-ui',
+					'sans-serif',
+				],
+				display: [
+					'"Fraunces"',
+					'Georgia',
+					'ui-serif',
+					'serif',
+				],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -63,12 +77,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				portfolio: {
-					blue: '#0EA5E9',
-					darkBlue: '#1A1F2C',
-					lightGray: '#F6F6F7',
-					gray: '#8E9196',
-				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -110,5 +118,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;

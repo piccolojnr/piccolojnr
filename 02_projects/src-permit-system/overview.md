@@ -1,3 +1,15 @@
+---
+title: SRC Permit System
+summary: University exam hall permit platform for 1,687 students with payments, role-based access, and a live Paystack to ExpressPay migration.
+tags:
+  - fullstack
+  - education
+  - payments
+featured: true
+sortOrder: 2
+cover: artifacts/preview.jpeg
+---
+
 # Project: SRC Permit Management System
 
 ---
