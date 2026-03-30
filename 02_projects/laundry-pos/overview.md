@@ -18,14 +18,14 @@ cover: artifacts/preview.png
 
 | | |
 |---|---|
-| **Status** | Live — active testing / soft launch with paying client |
+| **Status** | Live, active testing / soft launch with paying client |
 | **Period** | January 2026 – Present |
-| **Role** | Solo developer — designed, built, deploying |
+| **Role** | Solo developer, designed, built, deploying |
 | **Creator** | Daud Rahim |
 | **Type** | Solo |
-| **Client / Organisation** | Confidential — laundry business in Ghana |
+| **Client / Organisation** | Confidential, laundry business in Ghana |
 | **Industry** | Retail / Laundry / SaaS (planned) |
-| **Confidential?** | Yes — client identity confidential |
+| **Confidential?** | Yes, client identity confidential |
 
 ---
 
@@ -39,7 +39,7 @@ A laundry business with multiple branches had no centralised system to manage or
 
 - Designed the full data model and system architecture for a multi-branch POS
 - Built the complete application solo: frontend, backend, database, integrations
-- Implemented multi-branch support — each branch operates independently but reports to a central admin view
+- Implemented multi-branch support: each branch operates independently but reports to a central admin view
 - Built a full order dispatching system to track laundry through warehouse workflow stages
 - Implemented a multi-channel notification system where the channel (email, SMS, or WhatsApp) is selected per customer based on their preference
 - Integrated Paystack with support for partial payments
@@ -59,9 +59,9 @@ A laundry business with multiple branches had no centralised system to manage or
 
 **Approach / methodology:**
 
-Built as a Laravel + React monolith using Inertia.js, which allows React components to be served server-side without building a separate API. This kept the codebase lean and deployable without complex infrastructure. Multi-branch support is baked into the data model from the start — every order, customer, and transaction is scoped to a branch, with a super-admin view across all branches.
+Built as a Laravel + React monolith using Inertia.js, which allows React components to be served server-side without building a separate API. This kept the codebase lean and deployable without complex infrastructure. Multi-branch support is baked into the data model from the start: every order, customer, and transaction is scoped to a branch, with a super-admin view across all branches.
 
-The notification system checks each customer's preferred channel before sending — so a customer who prefers WhatsApp gets WhatsApp, not SMS. Orders trigger automatic notifications with a payment link on creation. Partial payments are tracked against the order total with a running balance.
+The notification system checks each customer's preferred channel before sending, so a customer who prefers WhatsApp gets WhatsApp, not SMS. Orders trigger automatic notifications with a payment link on creation. Partial payments are tracked against the order total with a running balance.
 
 ---
 
@@ -70,44 +70,44 @@ The notification system checks each customer's preferred channel before sending 
 | Metric | Value | Notes |
 |---|---|---|
 | Branches supported | Multi | Architecture supports unlimited branches |
-| Notification channels | 3 | Email, SMS, WhatsApp — per customer preference |
+| Notification channels | 3 | Email, SMS, WhatsApp, per customer preference |
 | Payment support | Partial payments | Running balance tracked per order |
 | Client status | Live / soft launch | Active testing with paying client |
 
 **In plain language:**
-A fully custom POS system built specifically for laundry businesses, live with a real paying client. Handles everything from order intake to payment to warehouse dispatch across multiple branches. Planning to evolve into a SaaS product.
+A fully custom POS system built specifically for laundry businesses, live with a real paying client. Handles orders, payments, and warehouse dispatch across multiple branches. Planning to evolve into a SaaS product.
 
 ---
 
 ## What made this hard
 
-- No off-the-shelf reference for how a laundry POS should work — had to design the domain model from scratch
+- No off-the-shelf reference for how a laundry POS should work: had to design the domain model from scratch
 - Multi-channel notifications required careful per-customer preference logic and multiple API integrations
-- Partial payment tracking adds complexity to the order lifecycle — a single order can have multiple payment events
+- Partial payment tracking adds complexity to the order lifecycle: a single order can have multiple payment events
 - Designing for multi-branch from day one while keeping the codebase maintainable as a solo developer
 
 ---
 
 ## What I'm proud of
 
-The notification system — automatically routing to the right channel per customer with no manual intervention is a genuinely thoughtful UX detail. Most small business software sends everything by one channel. Getting WhatsApp, SMS, and email working with per-customer preference routing was more complex than it sounds.
+The notification system automatically routes to the right channel per customer with no manual intervention. That's a genuinely thoughtful UX detail. Most small business software sends everything by one channel. Getting WhatsApp, SMS, and email working with per-customer preference routing was more complex than it sounds.
 
 ---
 
 ## What I'd do differently
 
-I'd invest more time upfront defining the warehouse workflow stages with the client before building — the dispatch/tracking module required the most iteration because the workflow wasn't fully clear at the start.
+I'd invest more time upfront defining the warehouse workflow stages with the client before building; the dispatch/tracking module required the most iteration because the workflow wasn't fully clear at the start.
 
 ---
 
 ## Artifacts & evidence
 
-**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+**Browse in repo:** [`artifacts/`](./artifacts/): screenshots and previews (GitHub shows a folder listing).
 
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
 | Screenshots | UI previews | [`artifacts/`](./artifacts/) | Yes |
-| Live system | Client deployment | — | No — confidential |
+| Live system | Client deployment | — | No, confidential |
 
 ---
 

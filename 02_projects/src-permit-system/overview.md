@@ -18,14 +18,14 @@ cover: artifacts/preview.jpeg
 
 | | |
 |---|---|
-| **Status** | Live — actively maintained |
+| **Status** | Live, actively maintained |
 | **Period** | July 2025 – Present |
-| **Role** | Solo developer — designed, built, deployed, and maintaining |
+| **Role** | Solo developer, designed, built, deployed, and maintaining |
 | **Creator** | Daud Rahim |
 | **Type** | Solo |
 | **Client / Organisation** | Student Representative Council (SRC), Knutsford University |
 | **Industry** | Education / Civic |
-| **Confidential?** | No — school administration endorsed; screenshots available |
+| **Confidential?** | No, school administration endorsed; screenshots available |
 
 ---
 
@@ -37,10 +37,10 @@ Knutsford University's SRC had no system for managing exam hall entry permits. T
 
 ## What I did
 
-- Designed the full system architecture from scratch — data model, payment flow, role structure
+- Designed the full system architecture from scratch: data model, payment flow, role structure
 - Built the complete full-stack application solo: frontend, backend, database, payment integration
 - Negotiated directly with Paystack to obtain starter API access for an informal student body that lacked formal business registration documents
-- Managed the migration from Paystack to ExpressPay mid-production after hitting Paystack's 30,000 GHS lifetime limit in the first semester — required obtaining an official school authorisation letter to unlock ExpressPay API access
+- Managed the migration from Paystack to ExpressPay mid-production after hitting Paystack's 30,000 GHS lifetime limit in the first semester: required obtaining an official school authorisation letter to unlock ExpressPay API access
 - Launched the MVP in July 2025 and have continuously updated and maintained it across two semesters
 - Coordinated handover planning with the incoming SRC administration
 
@@ -58,7 +58,7 @@ Knutsford University's SRC had no system for managing exam hall entry permits. T
 
 Built as a full-stack Next.js application with role-based authentication covering three user types: students, SRC staff, and exam hall verifiers. Students register, pay, and receive permits through a self-service flow. Exam hall staff verify entry using the system at the door. The SRC admin panel gives full visibility into registrations, payments, and permit status.
 
-Payment integration required unusual legwork — negotiated Paystack starter access for an unregistered student body, hit their GHS lifetime cap mid-semester, then navigated ExpressPay's onboarding which required a formal letter from the university. Both migrations were done without taking the system offline.
+Payment integration required unusual legwork, negotiated Paystack starter access for an unregistered student body, hit their GHS lifetime cap mid-semester, then navigated ExpressPay's onboarding which required a formal letter from the university. Both migrations were done without taking the system offline.
 
 ---
 
@@ -68,7 +68,7 @@ Payment integration required unusual legwork — negotiated Paystack starter acc
 |---|---|---|
 | Registered users | 1,687 | Across two semesters |
 | Total payments processed | 165,100 GHS | Two semesters combined |
-| Paystack limit hit | 30,000 GHS | First semester alone — triggered migration |
+| Paystack limit hit | 30,000 GHS | First semester alone, triggered migration |
 | Uptime | Continuous | No major downtime across two semesters |
 
 **In plain language:**
@@ -78,7 +78,7 @@ The system replaced a fully manual process with a self-service platform used by 
 
 ## What made this hard
 
-- The SRC had no formal business registration — getting any payment provider to work required negotiation and creative problem-solving
+- The SRC had no formal business registration: getting any payment provider to work required negotiation and creative problem-solving
 - Hitting the Paystack lifetime cap mid-semester meant migrating payment providers while the system was live with active users
 - Navigating two different payment provider onboarding processes under time pressure
 - Maintaining the system across two semesters as a student while completing coursework
@@ -87,7 +87,7 @@ The system replaced a fully manual process with a self-service platform used by 
 
 ## What I'm proud of
 
-Getting the payment infrastructure to work at all. Most developers would have hit the "no business registration" wall and stopped. Instead I negotiated access, used it fully, migrated cleanly to a second provider, and kept the system running throughout. That's not just a technical win — it's a problem-solving and persistence win.
+Getting the payment infrastructure to work at all. Most developers would have hit the "no business registration" wall and stopped. Instead I negotiated access, used it fully, migrated cleanly to a second provider, and kept the system running throughout. That's not just a technical win, it's a problem-solving and persistence win.
 
 ---
 
@@ -99,7 +99,7 @@ I'd design the payment provider abstraction layer properly from the start, so sw
 
 ## Artifacts & evidence
 
-**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots, previews, and other files (GitHub shows a folder listing).
+**Browse in repo:** [`artifacts/`](./artifacts/): screenshots, previews, and other files (GitHub shows a folder listing).
 
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
@@ -111,7 +111,7 @@ I'd design the payment provider abstraction layer properly from the start, so sw
 ## How to pitch this project
 
 ### For a technical audience
-Built a full-stack Next.js + MySQL permit management system with role-based auth, self-service student flows, and real-time entry verification. Navigated a live payment provider migration from Paystack to ExpressPay mid-production — triggered by hitting volume limits — without downtime. Maintained across two semesters as a solo developer.
+Built a full-stack Next.js + MySQL permit management system with role-based auth, self-service student flows, and real-time entry verification. Navigated a live payment provider migration from Paystack to ExpressPay mid-production (triggered by hitting volume limits) without downtime. Maintained across two semesters as a solo developer.
 
 ### For a business / non-technical audience
 Replaced a manual exam entry process with a self-service platform used by 1,687 students, processing over 165,000 GHS in fees. Delivered as a final year project and formally endorsed by the school administration.

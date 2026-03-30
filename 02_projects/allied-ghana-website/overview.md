@@ -1,6 +1,6 @@
 ---
 title: Allied Ghana
-summary: Corporate site for Allied Ghana (energy) — Next.js, TypeScript, Sanity CMS, station locator and partnerships. Delivered after long client iterations.
+summary: Corporate site for Allied Ghana (energy), Next.js, TypeScript, Sanity CMS, station locator and partnerships. Delivered after long client iterations.
 tags:
   - frontend
   - cms
@@ -20,18 +20,18 @@ cover: artifacts/preview.png
 |---|---|
 | **Status** | Live |
 | **Period** | ~Early 2025 – January 2026 (~1 year) |
-| **Role** | Sole developer — full implementation from Figma to production |
+| **Role** | Sole developer, full implementation from Figma to production |
 | **Creator** | Daud Rahim |
 | **Type** | Solo (referral via Paper Merchant / KGL Group) |
 | **Client / Organisation** | Allied Ghana (Allied Oil) |
 | **Industry** | Energy / Fuel & Lubricants |
-| **Confidential?** | No — publicly live |
+| **Confidential?** | No, publicly live |
 
 ---
 
 ## The problem
 
-Allied Ghana — a Ghanaian fuel and lubricants company operating since 1998, with partnerships including Afton Chemical, Castrol, Toyota, and Mobil — needed a corporate website. They had a Figma design via Paper Merchant but went through an extended, iterative feedback cycle before reaching a final approved design. The project required patience, professionalism, and sustained responsiveness across nearly a year of client-driven changes.
+Allied Ghana (a Ghanaian fuel and lubricants company operating since 1998, with partnerships including Afton Chemical, Castrol, Toyota, and Mobil) needed a corporate website. They had a Figma design via Paper Merchant but went through an extended, iterative feedback cycle before reaching a final approved design. The project required patience, professionalism, and sustained responsiveness across nearly a year of client-driven changes.
 
 ---
 
@@ -41,7 +41,7 @@ Allied Ghana — a Ghanaian fuel and lubricants company operating since 1998, wi
 - Built product and services pages, a station locator, fuel pricing display, and the Allied+ loyalty card section
 - Integrated Sanity CMS for ongoing content management
 - Implemented partnership content sections (Afton Chemical, Castrol, Toyota, Mobil)
-- Navigated approximately one year of design change cycles — staying professional and responsive throughout
+- Navigated approximately one year of design change cycles: staying professional and responsive throughout
 - Delivered and launched to production in January 2026
 
 ---
@@ -56,7 +56,7 @@ Allied Ghana — a Ghanaian fuel and lubricants company operating since 1998, wi
 
 **Approach / methodology:**
 
-Same stack as KGL Group — Next.js + Sanity CMS + TypeScript + Tailwind, implemented from a Paper Merchant Figma design. The technical complexity was moderate; the real challenge was project management. The client requested frequent design changes across nearly a year. Managed this by staying communicative, implementing changes accurately, and maintaining the relationship through what was a genuinely long and iterative process.
+Same stack as KGL Group: Next.js + Sanity CMS + TypeScript + Tailwind, implemented from a Paper Merchant Figma design. The technical complexity was moderate; the real challenge was project management. The client requested frequent design changes across nearly a year. Managed this by staying communicative, implementing changes accurately, and maintaining the relationship through what was a genuinely long and iterative process.
 
 ---
 
@@ -76,25 +76,25 @@ Delivered a full corporate website for a long-established Ghanaian energy compan
 
 ## What made this hard
 
-This was not a technically complex project — it was a relationship and endurance challenge. Frequent design changes, long feedback cycles, and a drawn-out timeline tested professionalism and patience more than engineering skill. Keeping the project alive and the client happy across that timeline was the real work.
+This wasn't a technically complex project. It was a relationship and endurance challenge. Frequent design changes, long feedback cycles, and a drawn-out timeline tested professionalism and patience more than engineering skill. Keeping the project alive and the client happy across that timeline was the real work.
 
 ---
 
 ## What I'm proud of
 
-Finishing it. A lot of freelancers would have let a project like this die or damaged the relationship under that timeline. Delivering it cleanly — and leaving the client satisfied — is what matters here.
+Finishing it. A lot of freelancers would have let a project like this die or damaged the relationship under that timeline. Delivering it cleanly, and leaving the client satisfied, is what matters here.
 
 ---
 
 ## What I'd do differently
 
-Establish a clearer change management process at the start — a defined number of revision rounds, with additional rounds scoped and quoted separately. This would have protected both sides and reduced the timeline significantly.
+Establish a clearer change management process at the start: a defined number of revision rounds, with additional rounds scoped and quoted separately. This would have protected both sides and reduced the timeline significantly.
 
 ---
 
 ## Artifacts & evidence
 
-**Browse in repo:** [`artifacts/`](./artifacts/) — screenshots and previews (GitHub shows a folder listing).
+**Browse in repo:** [`artifacts/`](./artifacts/): screenshots and previews (GitHub shows a folder listing).
 
 | Type | Description | Link / Location | Public? |
 |---|---|---|---|
@@ -106,7 +106,7 @@ Establish a clearer change management process at the start — a defined number 
 ## How to pitch this project
 
 ### For a technical audience
-Built a Next.js + TypeScript + Sanity CMS corporate website for a fuel and lubricants company — station locator, product pages, loyalty card section, and partnership content. Implemented from Figma, delivered to production after an extended client iteration cycle.
+Built a Next.js + TypeScript + Sanity CMS corporate website for a fuel and lubricants company: station locator, product pages, loyalty card section, and partnership content. Implemented from Figma, delivered to production after an extended client iteration cycle.
 
 ### For a business / non-technical audience
 Delivered the corporate website for Allied Ghana, an energy company with 25+ years in the Ghanaian market, navigating a year of design revisions while maintaining the client relationship throughout.

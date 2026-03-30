@@ -13,7 +13,7 @@ function blurb(other: PortfolioProject): string {
   const overlap = sharedTags(current, other);
   if (overlap.length) {
     const labels = overlap.slice(0, 4).join(", ");
-    return `Same stack themes (${labels}) — natural follow-on from this case study.`;
+    return `Same stack themes (${labels}). Natural follow-on from this case study.`;
   }
   const s = other.summary.trim();
   return s.length > 160 ? `${s.slice(0, 157)}…` : s;

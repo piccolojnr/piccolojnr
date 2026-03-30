@@ -17,13 +17,13 @@ export const TWITTER_HANDLE = "@piccolojnr";
 export const DEFAULT_OG_PATH = "/profile.jpg";
 
 /** Alt text for the default OG image (home, listing pages). */
-export const DEFAULT_OG_IMAGE_ALT = `${PERSON_NAME} — ${SITE_NAME} portfolio`;
+export const DEFAULT_OG_IMAGE_ALT = `${PERSON_NAME}, ${SITE_NAME} portfolio`;
 
 export const PROJECTS_INDEX_KEYWORDS =
   "software case studies, full stack portfolio Ghana, Next.js projects, FastAPI, AI SaaS, IoT development, Rahim Daud projects";
 
 export function projectOgImageAlt(projectTitle: string): string {
-  return `${projectTitle} — case study preview`;
+  return `${projectTitle} case study preview`;
 }
 
 export const SAME_AS = [
@@ -32,7 +32,7 @@ export const SAME_AS = [
   "https://twitter.com/piccolojnr",
 ] as const;
 
-export const PROJECTS_INDEX_DOCUMENT_TITLE = `Software case studies — Next.js, FastAPI, AI & IoT | ${SITE_NAME}`;
+export const PROJECTS_INDEX_DOCUMENT_TITLE = `Software case studies: Next.js, FastAPI, AI & IoT | ${SITE_NAME}`;
 
 export const PROJECTS_INDEX_DESCRIPTION =
   "Portfolio case studies from a Ghana-based full-stack engineer: Next.js and React frontends, FastAPI and Node APIs, RAG / AI SaaS, payments, and IoT + kiosk systems. Filter by topic.";
@@ -43,7 +43,7 @@ export function formatPageTitle(pageTitle: string): string {
 }
 
 export function projectDocumentTitle(projectTitle: string): string {
-  return `${projectTitle} — case study | ${PERSON_NAME} · ${SITE_NAME}`;
+  return `${projectTitle}: case study | ${PERSON_NAME} · ${SITE_NAME}`;
 }
 
 export function absoluteUrl(siteHref: string, pathname: string): string {
