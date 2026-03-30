@@ -77,6 +77,24 @@
   text-underline-offset: 4px;
 }
 
+.prose-portfolio :where(code):not(:where(pre code)) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--color-foreground);
+  background: color-mix(in srgb, var(--color-muted) 85%, white 15%);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  white-space: nowrap;
+}
+
+.prose-portfolio :where(code):not(:where(pre code))::before,
+.prose-portfolio :where(code):not(:where(pre code))::after {
+  content: none;
+}
+
 .prose-portfolio :where(hr) {
   border-color: var(--color-border);
 }
