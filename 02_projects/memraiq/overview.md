@@ -1,6 +1,6 @@
 ---
 title: Memraiq
-summary: AI SaaS for querying personal knowledge with a custom RAG pipeline, multi-tenant API, and production deployments on Vercel and Railway.
+summary: Custom RAG platform built around systematic failure analysis — identifying where retrieval and reasoning break, then redesigning the pipeline until behavior was reliable.
 tags:
   - ai
   - saas
@@ -11,171 +11,121 @@ liveUrl: https://memraiq.com
 cover: artifacts/preview.png
 ---
 
-# Project: Memraiq, AI-Powered Portfolio RAG Platform
+# Memraiq — AI-Powered Knowledge Platform
 
 ---
 
 ## Overview
 
-|                           |                                                            |
-| ------------------------- | ---------------------------------------------------------- |
-| **Status**                | Live, v1 deployed; v2 in active development                |
-| **Period**                | March 2026 – Present                                       |
-| **Role**                  | Solo developer, designed, built, deployed, and maintaining |
-| **Creator**               | Daud Rahim                                                 |
-| **Type**                  | Solo / Personal SaaS                                       |
-| **Client / Organisation** | Self, personal product                                     |
-| **Industry**              | AI / Developer Tools / SaaS                                |
-| **Confidential?**         | No, live product; screenshots and live demo available      |
+|              |                                                                            |
+| ------------ | -------------------------------------------------------------------------- |
+| **Status**   | Live, v1 deployed; v2 in active development                                |
+| **Period**   | March 2026 – Present                                                       |
+| **Role**     | Solo developer — architecture, implementation, deployment, and maintenance |
+| **Type**     | Personal SaaS product                                                      |
+| **Industry** | AI / Developer Tools                                                       |
 
 ---
 
 ## The problem
 
-Professionals and developers accumulate large amounts of personal documentation (portfolios, notes, project writeups, CVs, experience logs) but have no intelligent way to query or surface insights from them. Static documents require manual searching and context-switching. There was no tool purpose-built for asking natural language questions against a personal knowledge vault and getting grounded, cited answers back. I built Memraiq to solve that.
+Professionals accumulate large amounts of personal documentation — portfolios, project writeups, notes, CVs — with no intelligent way to query across them. I built Memraiq to let users ask natural language questions against a personal knowledge vault and get grounded, cited answers back.
+
+The harder problem turned out to be this: building a RAG system that actually behaves reliably. Getting a pipeline to return _something_ is easy. Getting it to return the right thing, decline when it shouldn't answer, and stay consistent across different query types is not. That gap became the core engineering challenge.
 
 ---
 
-## What I did
+## What I built
 
-- Designed the entire platform architecture from scratch: service boundaries, data model, auth flow, RAG pipeline, and deployment topology
-- Built and deployed the full-stack v1 application: Next.js frontend, FastAPI backend, Qdrant vector store, and LightRAG integration
-- Built a custom RAG system from scratch (memra-rag) as the foundation for v2: including custom semantic chunking, multi-stage retrieval, query classification, cross-encoder reranking, and Neo4j graph store integration
-- Implemented a multi-tenant API with per-org data isolation, encrypted API key storage, conversation history, and cost tracking
-- Built the frontend chat interface with streaming answers, source citations, a full markdown vault editor, and a real-time pipeline control panel with SSE progress streaming
-- Set up the full deployment infrastructure across Vercel (frontend), Railway (API + RAG service), Supabase (PostgreSQL), and Qdrant cloud (vectors)
-- Navigated LightRAG's limitations and made the architectural decision to build a custom RAG pipeline to gain full control over chunking, retrieval quality, and cost
+A multi-tenant SaaS platform across four services:
 
----
+- **Next.js 15 frontend** — streaming chat interface, markdown vault editor, real-time pipeline status via SSE
+- **FastAPI multi-tenant API** — JWT auth, encrypted API keys, per-org data isolation, conversation history, cost tracking
+- **memra-rag** — custom RAG service built from scratch: semantic chunking, Qdrant vector store, Neo4j graph store, query classification, cross-encoder reranking
+- **Infrastructure** — Vercel (frontend), Railway (API + RAG), Supabase (PostgreSQL), Qdrant cloud
 
-<h2 class="case-study-results-heading">Results</h2>
-
-Solo-built AI SaaS: grounded Q&A over personal knowledge vaults, multi-tenant API, and a custom RAG core, live in production.
-
-- **Shipped** a working v1, then replaced the bundled RAG dependency with **memra-rag** (custom chunking, retrieval, reranking, graph augmentation) so quality and cost stay under control as usage grows.
-- **Live product**: marketing site, authenticated app (chat, vault, pipeline UX), and admin dashboard across **memraiq.com**, **app.memraiq.com**, and **admin.memraiq.com**.
-- **Delivery scope**: four services (frontend, two API generations, RAG service), **15+** API surfaces, six RAG pipeline stages end-to-end, four cloud providers.
-
-| Metric                   | Value | Notes                                                               |
-| ------------------------ | ----- | ------------------------------------------------------------------- |
-| Live deployments         | 3     | memraiq.com, app.memraiq.com, admin.memraiq.com                     |
-| Services built           | 4     | memra-app, memra-api, memra-rag, memra-api-v2                       |
-| RAG pipeline components  | 6     | Chunker, embedder, classifier, retriever, reranker, generator       |
-| API endpoints            | 15+   | Auth, vault CRUD, pipeline control, conversations, export, settings |
-| Infrastructure providers | 4     | Vercel, Railway, Supabase, Qdrant cloud                             |
-
-**In plain language:** Built and shipped a live AI SaaS product end to end (architecture through production. Validated with v1, then rebuilt the intelligence layer as a first-party RAG system for lasting control over retrieval and spend. Today it is a real multi-tenant product with admin, vault editing, streaming answers with citations, and production infrastructure) not a demo.
+The v1 used LightRAG as the retrieval layer. Once real usage exposed its limits, I replaced it with `memra-rag` — a fully custom pipeline I designed and built to regain control over chunking quality, retrieval behavior, and cost.
 
 ---
 
-## How I did it
+## Failure analysis and system iteration
 
-**Stack (one glance):** Next.js 15 on **Vercel**; **FastAPI** + SQLModel on **Railway**; PostgreSQL via **Supabase**; **Qdrant** for vectors and **Neo4j** for graph edges; **Claude** and **OpenAI** for models and embeddings. JWT auth, encrypted API keys, per-organization data isolation, SSE for long-running pipeline feedback.
+This is the part I spent the most time on. Rather than treating the RAG pipeline as a black box and tuning prompts, I evaluated its behavior systematically and redesigned components based on specific failure modes.
 
-**How the pieces evolved:** v1 paired the app and API with **LightRAG** to reach production quickly. Once usage made the limits obvious (chunking, tuning, cost visibility), I stood up **memra-rag** (a dedicated FastAPI service for ingestion, semantic chunking, embedding, vector + graph retrieval, query expansion, and cross-encoder reranking) and wired it in through **memra-api-v2** over Railway private networking. The client stays a full SaaS shell: streaming chat, markdown vault with preview, admin subdomain, and real-time pipeline status.
+### Failure 1: Over-retrieval on simple queries
+
+**What I observed:** The system triggered full retrieval for every query, including conversational inputs that needed no context at all. This added unnecessary latency and cost on every turn.
+
+**Root cause:** No routing layer — the pipeline had one path for everything.
+
+**Fix:** Introduced an intent classification layer upstream. It decides whether a query needs retrieval, and if so, which retrieval mode. Queries that don't need context skip the pipeline entirely.
 
 ---
 
-## Failure analysis & system iteration
+### Failure 2: Hallucination when context was insufficient
 
-Rather than treating the RAG pipeline as a static system, I continuously evaluated its behavior under real usage and iteratively redesigned components based on observed failure modes.
+**What I observed:** When a user asked about something not in their vault, the model would generate a plausible-sounding answer with no grounding. The system had no way to say "I don't know."
 
-### Key failure patterns identified
+**Root cause:** No constraint on generation. The model was given a query and told to answer; it did.
 
-1. **Over-retrieval and unnecessary pipeline execution**  
-   The system initially triggered full retrieval for all queries, including simple inputs that did not require context. This introduced unnecessary latency and cost.  
-   Introduced an intent classification layer to determine whether retrieval is required and which pipeline path to execute.
+**Fix:** Added an explicit "insufficient context" path. When the retriever returns nothing relevant, the system declines to answer rather than fabricating. This required changing the generation prompt _and_ adding a confidence signal from the retriever, so the generator had something to gate on.
 
-2. **Lack of grounding and answer traceability**  
-   Early responses did not clearly indicate where information was sourced from, making verification and debugging difficult.  
-   Added citation and reference tracking to every response, exposing source documents and improving system transparency.
+---
 
-3. **Hallucination under insufficient context**  
-   The model attempted to generate answers even when no relevant documents were available.  
-   Enforced strict response constraints where the system explicitly declines to answer when sufficient context is not present.
+### Failure 3: Rigid retrieval across different query types
 
-4. **Rigid retrieval strategy across query types**  
-   A single retrieval approach did not perform well across different query patterns.  
-   Introduced multiple retrieval modes:
-   - `naive` (vector-only retrieval)
-   - `hybrid` (vector + graph retrieval)
+**What I observed:** Vector-only retrieval worked well for focused factual questions but failed on relational or multi-hop queries — things like "how does my IoT project relate to my systems experience?" — where the answer depended on connections across documents, not similarity to a single query.
 
-   This allowed the system to adapt retrieval strategy based on query intent.
+**Root cause:** One retrieval mode for all query shapes.
 
-5. **Poor handling of empty knowledge state**  
-   First-time users without uploaded data received confusing or irrelevant responses.  
-   Implemented conditional system behavior for empty vault states, guiding users to upload data instead of generating misleading outputs.
+**Fix:** Added a `hybrid` mode pairing Qdrant vector retrieval with Neo4j graph traversal. The intent classifier routes relational queries into hybrid mode and factual queries into `naive` (vector-only). The graph edges encode relationships across documents that pure vector similarity can't capture.
 
-6. **Inconsistent structured output generation**  
-   Generated documents lacked predictable structure, reducing usability.  
-   Introduced structured generation logic to ensure consistent and usable outputs.
+---
 
-### Outcome
+### Failure 4: Answers with no traceability
 
-These iterations significantly improved:
+**What I observed:** Early responses gave no indication of where information came from. Debugging a wrong answer meant manually re-running the pipeline and inspecting intermediate outputs.
 
-- response reliability
-- retrieval efficiency
-- system transparency
-- user experience under edge cases
+**Root cause:** Citations and source tracking weren't built into the pipeline — they were an afterthought.
 
-The system evolved from a basic RAG implementation into a controlled, observable pipeline with explicit behavior under different conditions.
+**Fix:** Made source references a first-class output at every stage. The retriever attaches source metadata; the generator is prompted to cite; the frontend renders citations inline. This also improved the user experience significantly: grounded answers are visibly more trustworthy.
+
+---
+
+### Failure 5: Inconsistent behavior on empty vaults
+
+**What I observed:** New users who hadn't uploaded anything yet received irrelevant or confusing responses. The system had no awareness of "no data" as a distinct state.
+
+**Root cause:** The pipeline assumed there was always something to retrieve.
+
+**Fix:** Added an empty-vault detection path that intercepts queries before retrieval and guides users to upload content. Simple conditional, but it mattered for real-world reliability.
+
+---
+
+## What this work taught me
+
+Each failure mode had the same structure: the system did something that looked plausible on the surface but was wrong for a specific reason. Fixing it required understanding _why_ it was wrong — not just patching symptoms. Over-retrieval wasn't a prompt problem; it was a missing routing layer. Hallucination wasn't a temperature problem; it was a missing constraint on generation.
+
+The habit of asking "what exactly went wrong, and what structural change fixes it" rather than "what prompt tweak makes the output look better" is what pushed the pipeline from unreliable to trustworthy.
+
+---
+
+## Technical stack
+
+**Python · FastAPI · Next.js 15 · Qdrant · Neo4j · PostgreSQL · Claude · OpenAI · Vercel · Railway · Supabase · Docker**
 
 ---
 
 ## What made this hard
 
-- Designing a multi-service architecture solo with no team to sanity-check decisions: every service boundary, data model, and API contract had to be thought through alone
-- LightRAG is opinionated and hard to debug when retrieval quality is poor: diagnosing problems meant reading source code rather than documentation
-- Building a custom RAG pipeline required understanding and implementing chunking strategies, embedding pipelines, vector search tuning, graph retrieval, and cross-encoder reranking: not just wiring up a library
-- Keeping three live deployments (frontend, API, RAG) in sync during iteration, especially when the v2 API and RAG service are being developed in parallel
-- Building a SaaS product (auth, multi-tenancy, billing hooks, encrypted secrets, per-org data isolation) on top of a technically complex RAG core, as a solo developer
+Designing a multi-service architecture solo meant every boundary, data model, and API contract was a decision I had to own without a second opinion. LightRAG was opinionated and difficult to debug; diagnosing problems meant reading source code, not documentation. Building the custom RAG pipeline required understanding and implementing each stage — chunking strategies, embedding, vector and graph retrieval, reranking — not just importing a library. And all of this while keeping the live v1 running and the frontend moving forward.
 
 ---
 
-## What I'm proud of
+## Links
 
-Building the custom RAG pipeline. It would have been easy to stay on LightRAG and call it done (but I recognised the ceiling and built my way out of it. The memra-rag service is a proper, production-oriented RAG system: semantic chunking, Qdrant + Neo4j retrieval, query classification, and cross-encoder reranking. That's not a tutorial project) that's a system that required a real understanding of how retrieval works and the patience to build and test each layer. The fact that I did that while also maintaining the live v1 and continuing to ship the frontend is the part I'm most proud of.
-
----
-
-## What I'd do differently
-
-I'd define the RAG service's API contract earlier and mock it on the API side before the service was built, so memra-api-v2 and memra-rag could be developed truly in parallel without blocking each other. I also underestimated how much time the multi-tenancy and settings-layering logic in the API would take, I'd extract that into its own design phase next time before touching routes.
-
----
-
-## Artifacts & evidence
-
-**Browse in repo:** [`artifacts/`](./artifacts/): screenshots, previews, and other files (GitHub shows a folder listing).
-
-| Type              | Description                       | Link / Location                                            | Public?                |
-| ----------------- | --------------------------------- | ---------------------------------------------------------- | ---------------------- |
-| Live app          | Frontend (chat, vault, pipeline)  | [app.memraiq.com](https://app.memraiq.com)                 | Yes (sign-up required) |
-| Marketing site    | Landing page                      | [memraiq.com](https://memraiq.com)                         | Yes                    |
-| Admin dashboard   | Admin panel                       | [admin.memraiq.com](https://admin.memraiq.com)             | Restricted             |
-| Screenshots       | UI screenshots & previews         | [`artifacts/`](./artifacts/)                               | Yes                    |
-| Source code       | All four repos in portfolio vault | `/portfolio-vault/`                                        | Private                |
-| Architecture docs | Detailed system design + schema   | `memraiq-architecture-plan.md`, `memraiq-system-design.md` | Private                |
-
----
-
-## How to pitch this project
-
-### For a technical audience
-
-Built a multi-tenant RAG SaaS platform across four services: a Next.js 15 frontend, a FastAPI multi-tenant API with encrypted secrets and SSE streaming, a custom RAG pipeline (semantic chunking, Qdrant + Neo4j retrieval, query classification, cross-encoder reranking), and a v2 API integrating it all. Deployed across Vercel, Railway, Supabase, and Qdrant cloud. Migrated from LightRAG to a fully custom retrieval system after identifying the limits of the third-party dependency.
-
-### For a business / non-technical audience
-
-Built a live AI product from scratch that lets users ask questions about their personal knowledge vault and get grounded, cited answers. Shipped a working v1, validated it, then rebuilt the core intelligence layer from scratch to improve quality. The product is live with a public-facing app, an admin dashboard, and a full subscription-ready backend, all built solo.
-
-### One-line version
-
-> Built and deployed a full-stack AI SaaS platform for querying personal knowledge vaults using a custom-built RAG pipeline: live at memraiq.com.
-
----
-
-## Tags
-
-`ai` `rag` `saas` `full-stack` `next.js` `fastapi` `python` `qdrant` `neo4j` `vector-search` `anthropic` `openai` `multi-tenant` `vercel` `railway` `supabase` `solo` `production` `developer-tools` `nlp`
+|                |                                                               |
+| -------------- | ------------------------------------------------------------- |
+| Live app       | [app.memraiq.com](https://app.memraiq.com) (sign-up required) |
+| Marketing site | [memraiq.com](https://memraiq.com)                            |
+| GitHub         | [piccolojnr](https://github.com/piccolojnr)                   |
