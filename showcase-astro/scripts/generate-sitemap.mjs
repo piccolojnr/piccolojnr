@@ -45,7 +45,10 @@ const projectsPath = join(root, "public", "data", "projects.json");
 const raw = readFileSync(projectsPath, "utf8");
 const data = JSON.parse(raw);
 const slugs = Array.isArray(data.projects)
-  ? data.projects.map((p) => p.slug).filter(Boolean)
+  ? data.projects
+      .map((p) => p.slug)
+      .filter((slug) => Boolean(slug) && slug !== "memraiq" && slug !== "ate05")
+      .concat("ate05")
   : [];
 
 const paths = ["/", "/projects/", ...slugs.map((s) => `/projects/${s}/`)];

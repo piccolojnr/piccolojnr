@@ -6,9 +6,9 @@
   "packageManager": "pnpm@9.15.4",
   "scripts": {
     "sync:portfolio": "node scripts/sync-portfolio.mjs",
-    "prebuild": "pnpm run sync:portfolio && node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs",
     "dev": "pnpm run sync:portfolio && astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/sanitize-dist.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
