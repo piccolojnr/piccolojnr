@@ -210,7 +210,28 @@ async function main() {
       const artifactFiles = useFs
         ? await listArtifactNamesFs(slug, root)
         : await listArtifactNamesGitHub(slug);
-      projects.push(buildProject(slug, rawMd, artifactFiles));
+      const { data } = matter(rawMd);
+      if (data.published === false || slug === "memraiq") continue;
+      const project = buildProject(slug, rawMd, artifactFiles);
+      if (useFs) {
+        const artifactDir = path.join(root, slug, "artifacts");
+        const publicDir = path.join(SHOWCASE_ROOT, "public", "projects", slug, "artifacts");
+        fs.mkdirSync(publicDir, { recursive: true });
+        for (const name of artifactFiles) {
+          fs.copyFileSync(path.join(artifactDir, name), path.join(publicDir, name));
+        }
+        project.images = artifactFiles.map((name) => `/projects/${slug}/artifacts/${encodeURIComponent(name)}`);
+        if (data.cover && fs.existsSync(path.join(root, slug, data.cover.replace(/^\.\//, "")))) {
+          const cover = data.cover.replace(/^\.\//, "");
+          project.coverImage = `/projects/${slug}/${cover}`;
+        } else {
+          project.coverImage = project.images.find((url) => /preview\.(png|jpe?g|webp)$/i.test(url)) || project.images[0];
+        }
+      }
+      if (!artifactFiles.length) {
+        project.body = project.body.replace(/^## Artifacts & evidence[\s\S]*?(?=^## |$(?![\s\S]))/m, "");
+      }
+      projects.push(project);
     } catch (e) {
       console.error(`[sync-portfolio] Skip ${slug}:`, e.message);
     }

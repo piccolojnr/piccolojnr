@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: http://localhost:4321/sitemap.xml
+Sitemap: https://piccolojr.vercel.app/sitemap.xml

@@ -5,7 +5,7 @@ const site =
   process.env.SITE_URL ||
   process.env.VITE_SITE_URL ||
   process.env.PUBLIC_SITE_URL ||
-  "http://localhost:4321";
+  "https://piccolojr.vercel.app";
 
 // https://astro.build/config
 export default defineConfig({

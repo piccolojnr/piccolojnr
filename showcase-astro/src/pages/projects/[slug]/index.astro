@@ -32,7 +32,7 @@ const ogImage =
   project.images.find((u) => /^https?:\/\//i.test(u)) ||
   undefined;
 
-const bodyHtml = await renderPortfolioMarkdown(project.body);
+const bodyHtml = await renderPortfolioMarkdown(project.body, project.repoFolderUrl);
 const hasBody = project.body.trim().length > 0;
 const hasGallery = project.images.length > 0;
 const galleryId = `gallery-${project.slug}`;

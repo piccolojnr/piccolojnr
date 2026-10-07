@@ -35,11 +35,11 @@ function loadSiteUrl() {
 const origin = loadSiteUrl();
 if (!origin) {
   console.warn(
-    "[generate-sitemap] SITE_URL (or VITE_SITE_URL) is not set. Using http://localhost:4321. Set in .env for production."
+    "[generate-sitemap] SITE_URL (or VITE_SITE_URL) is not set. Using https://piccolojr.vercel.app. Set in .env for production."
   );
 }
 
-const base = origin || "http://localhost:4321";
+const base = origin || "https://piccolojr.vercel.app";
 
 const projectsPath = join(root, "public", "data", "projects.json");
 const raw = readFileSync(projectsPath, "utf8");

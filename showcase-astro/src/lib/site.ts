@@ -1,16 +1,16 @@
 /** Public site name (title suffix, OG site_name). */
 export const SITE_NAME = "piccolo jnr";
 
-export const PERSON_NAME = "Rahim Daud";
+export const PERSON_NAME = "Daud Rahim";
 
 export const HOME_DOCUMENT_TITLE =
-  "Rahim Daud – Full Stack Engineer (AI, IoT, SaaS) | Portfolio";
+  "Daud Rahim – Software Engineer | Portfolio";
 
 export const SITE_DESCRIPTION =
-  "Full-stack engineer in Ghana (Accra) specializing in AI systems, RAG pipelines, FastAPI & Next.js backends, IoT platforms, and scalable SaaS. Production case studies: Memraiq, university systems, and hardware-integrated products.";
+  "Software engineer based in Accra, Ghana. React, Next.js, Laravel, Python/FastAPI and Tauri. Case studies in desktop software, payments, web applications and hardware integrations.";
 
 export const SITE_KEYWORDS =
-  "Rahim Daud, full stack engineer Ghana, Accra software developer, AI engineer portfolio, RAG systems, FastAPI developer, Next.js portfolio, IoT developer portfolio, SaaS architect, piccolo jnr";
+  "Daud Rahim, full stack engineer Ghana, Accra software developer, React developer, Laravel developer, Tauri desktop software, FastAPI developer, Next.js portfolio, IoT developer portfolio, SaaS architect, piccolo jnr";
 
 export const TWITTER_HANDLE = "@piccolojnr";
 
@@ -20,7 +20,7 @@ export const DEFAULT_OG_PATH = "/profile.jpg";
 export const DEFAULT_OG_IMAGE_ALT = `${PERSON_NAME}, ${SITE_NAME} portfolio`;
 
 export const PROJECTS_INDEX_KEYWORDS =
-  "software case studies, full stack portfolio Ghana, Next.js projects, FastAPI, AI SaaS, IoT development, Rahim Daud projects";
+  "software case studies, full stack portfolio Ghana, Next.js projects, FastAPI, desktop software, IoT development, Daud Rahim projects";
 
 export function projectOgImageAlt(projectTitle: string): string {
   return `${projectTitle} case study preview`;
@@ -28,14 +28,14 @@ export function projectOgImageAlt(projectTitle: string): string {
 
 export const SAME_AS = [
   "https://github.com/piccolojnr",
-  "https://www.linkedin.com/in/rahim-daud-piccolo",
+  "https://www.linkedin.com/in/rahimdaud/",
   "https://twitter.com/piccolojnr",
 ] as const;
 
-export const PROJECTS_INDEX_DOCUMENT_TITLE = `Software case studies: Next.js, FastAPI, AI & IoT | ${SITE_NAME}`;
+export const PROJECTS_INDEX_DOCUMENT_TITLE = `Software case studies: Web, desktop & integrations | ${SITE_NAME}`;
 
 export const PROJECTS_INDEX_DESCRIPTION =
-  "Portfolio case studies from a Ghana-based full-stack engineer: Next.js and React frontends, FastAPI and Node APIs, RAG / AI SaaS, payments, and IoT + kiosk systems. Filter by topic.";
+  "Portfolio case studies from a Ghana-based full-stack engineer: Next.js and React frontends, Laravel, FastAPI and Node APIs, desktop software, payments, and IoT + kiosk systems. Filter by topic.";
 
 export function formatPageTitle(pageTitle: string): string {
   if (pageTitle === SITE_NAME) return SITE_NAME;
@@ -78,7 +78,9 @@ export function homeJsonLd(siteHref: string): object {
           "Full-stack web development",
           "Next.js",
           "FastAPI",
-          "Retrieval-augmented generation",
+          "Desktop software",
+          "Tauri",
+          "Laravel",
           "IoT systems",
           "SaaS architecture",
           "Ghana",
